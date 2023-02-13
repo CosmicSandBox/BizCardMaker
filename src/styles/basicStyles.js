@@ -35,3 +35,13 @@ export const Btn = styled.button`
   font-size: 16px;
   margin-bottom: 70px;
 `;
+
+export const Under = styled.div`
+  width: 100%;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #505050;
+  font-size: 12px;
+`;

@@ -10,7 +10,7 @@ import {
 } from "../styles/basicStyles";
 
 const SelectTamplate = ({ userInfo }) => {
-  const [side, setSide] = useState("back"); //'front', 'back'
+  const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedTemplate, setSelectedTemplate] = useState({
     front: null,
     back: null,
