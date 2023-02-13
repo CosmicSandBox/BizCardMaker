@@ -1,0 +1,37 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 44px;
+  height: 812px;
+`;
+
+export const TopContainer = styled.div`
+  width: 90%;
+  height: 65px;
+  margin: 0 auto;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Playground = styled.div`
+  width: 90%;
+  height: 655px;
+  margin: 0 auto;
+  padding-top: 30px;
+  text-align: center;
+`;
+
+export const Btn = styled.button`
+  width: 87%;
+  height: 65px;
+  background: ${(props) => props.color};
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 70px;
+`;
