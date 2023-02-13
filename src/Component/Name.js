@@ -95,6 +95,9 @@ function Name() {
         setColor(input.length <= 1 ? "#D3D3D3" : "#FF7A00");
     };
 
+     //input focus, blur
+    let [inputclicked, setInputClicked] = useState(false);
+
     return (
         <>
         <GlobalStyle />
@@ -112,7 +115,9 @@ function Name() {
                         <Detail>실명 입력</Detail>
                         <InputName
                             onChange = {onChange} 
-                            placeholder="ex) 김멋사"
+                            placeholder={inputclicked === true ? "" : "김멋사"}
+                            onFocus={() => {setInputClicked(true)}}
+                            onBlur={() => {setInputClicked(false)}}
                         />
                 
                     </Form>

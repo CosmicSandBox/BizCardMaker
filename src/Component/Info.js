@@ -85,16 +85,17 @@ const Btn = styled.button`
     font-size: 16px;
     margin-bottom: 70px;
     `;
-
+//박스 목록 관리
 const InputBox = styled.div`
     width: 87%;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    background-color: lightgray;
+    background-color: #fee79f;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 const Box2 = styled.div`
@@ -113,15 +114,19 @@ const Box2 = styled.div`
 `;
 
 const InputInfo = styled.input`
-    width: 85%;
+    width: 83.5%;
     height: 40px;
     border-width: 1px;
     background-color: transparent;
     border:none;
     font-size: 1rem;
     border-bottom: solid 1px #94987E;
+    padding-left: 8px;
     &:focus {
         outline: none;
+    }
+    &::placeholder {
+        color: #D3D3D3;
     }
     `;
 
@@ -188,14 +193,30 @@ function Info() {
         setDetailmsg(detail[count]);
     }
 
-    //input 추가하기
+    //input initmsg
+    const initinput = ['아기 사자',
+        '정글탐험학과',
+        '010-xxxx-xxxx / like****2023',
+        'likelion@hufs.ac.kr',
+        'CUTE'
+    ];
+    const [initmsg, setInitmsg] = useState(initinput[0]);
+    const ChangeInit = () => {
+        setInitmsg(initinput[count]);
+    }
+
+    //input focus, blur
+        let [inputclicked, setInputClicked] = useState(false);
+
+
+    //box 추가하기
     const addBox = () => {
         const List = styled.div`
             width: 100%;
             height: 50px;
             background-color: transparent;
             border:none;
-            border-top: solid 0.3px #94987E;
+            border-top: solid 0.3px #f7be7c;
             font-size: 1rem;
 
             display: flex;
@@ -210,10 +231,11 @@ function Info() {
 
     const [inputbox, setInputbox] = useState([])
 
-    //초기화
-    const inputRef = useRef(null);
-    const onReset = () => {
+    //값 저장 및 초기화
+    const Send = () => {
+        setUser(user => [...user, input]);
         setInput('');
+
     };
 
     const poslist = ['106px', '147px', '190px', '232px'];
@@ -249,25 +271,36 @@ function Info() {
 
     //클릭
     const onClick = () => {
-        if(count === 5) {
-            navigate("/");
+        if(input.length >=1) {
+            if(count === 5) {
+                navigate('/test', {
+                    state: { name: user[0],
+                            nickname: user[1],
+                            major: user[2],
+                            contact: user[3],
+                            email: user[4],
+                            mbti: user[5]
+                    },
+                });
+            }
+            else {
+                //msg 변경
+                setCount(prev => prev + 1);
+                Changetopmsg();
+                Changeplz();
+                ChangeDetail();
+                ChangeInit();
+                //값 저장 및 초기화
+                Send();
+                //input 추가
+                setInputbox([...inputbox, addBox()]);
+                //사자
+                Lion();
+            }
         }
         else {
-        //msg 변경
-        setCount(prev => prev + 1);
-        Changetopmsg();
-        Changeplz();
-        ChangeDetail();
-        //값 저장
-        setUser(user => [...user, input]);
-        //값 초기화
-        onReset();
-        //input 추가
-        setInputbox([...inputbox, addBox()]);
-        }
-        //사자
-        Lion();
-        
+            alert("정보를 입력하세요!");
+        };  
     };
     console.log(user);
     console.log("여긴 info" + pos);
@@ -290,7 +323,13 @@ function Info() {
                             <InfoPleaseBox> {plzmsg} </InfoPleaseBox>
                             <Detail> {detailmsg} </Detail>
                         </Box2>
-                        <InputInfo onChange={onChange} placeholder="이곳에 입력하세요"/>
+                        <InputInfo 
+                            onChange={onChange} 
+                            placeholder={inputclicked === true ? "" : initmsg}
+                            value={input}
+                            onFocus={() => {setInputClicked(true)}}
+                            onBlur={() => {setInputClicked(false)}}
+                            />
                         <InputBox>
                             {inputbox.map(elem => elem)}
                         </InputBox>  
