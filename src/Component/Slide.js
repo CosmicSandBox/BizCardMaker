@@ -41,12 +41,12 @@ const Slide = ({ photos, pickEvent = null }) => {
         div.slide-body {
           display: flex;
           justify-content: center;
-          height: 100vh;
+          height: 100%;
         }
         section.slide-section {
           background-color: pink;
           display: flex;
-          width: 50vw;
+          width: 100%;
           justify-content: center;
           align-items: center;
           overflow-x: hidden;
