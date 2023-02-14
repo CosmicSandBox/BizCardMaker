@@ -7,6 +7,7 @@ import Test from './Component/Test';
 import Three from "./Component/Three";
 import Slide from "./Component/Slide";
 import HomePage from "./Component/HomePage";
+import SelectTamplate from "./Component/SelectTamplate";
 
 function Router() {
     return (
@@ -22,6 +23,7 @@ function Router() {
                 />
                 <Route path="/three" element={<Three />} />
                 <Route path="/home" element={<HomePage />} />
+                <Route path="/select-template" element={<SelectTamplate />} />
             </Routes>
         </BrowserRouter>
   );
