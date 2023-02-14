@@ -1,6 +1,6 @@
 import Router from "./router.js";
 import "./index.css";
-import { Under } from "../src/styles/basicStyles.js";
+import Undermsg from "./Undermsg";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       }}
     >
       <Router />
-      <Under>HUFS GLOBAL LIKELION</Under>
+      <Undermsg />
     </div>
   );
 }
