@@ -6,6 +6,7 @@ import Name from './Component/Name';
 import Test from './Component/Test';
 import Three from "./Component/Three";
 import Slide from "./Component/Slide";
+import HomePage from "./Component/HomePage";
 
 function Router() {
     return (
@@ -20,9 +21,10 @@ function Router() {
                 element={<Slide photos={[<h3>1</h3>, <h3>2</h3>, <h3>3</h3>]} />}
                 />
                 <Route path="/three" element={<Three />} />
+                <Route path="/home" element={<HomePage />} />
             </Routes>
         </BrowserRouter>
-    );
+  );
 }
 
 export default Router;
