@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
 import Undermsg from "./Undermsg";
 import TopLion from "./TopLion";
+
 
 const Container = styled.div`
   width: 100%;
@@ -135,7 +136,7 @@ function Info() {
   const location = useLocation();
   console.log("state", location.state);
 
-  const [userInfo, setUserInfo] = useState(location.state);
+  const [userInfo] = useState(location.state);
 
   //인풋값에 따른 버튼 색
   const [input, setInput] = useState("");
@@ -149,61 +150,56 @@ function Info() {
 
   //유저 정보 저장
   const [user, setUser] = useState([userInfo.name]);
+
   //count
   const [count, setCount] = useState(1);
+
+  //input focus, blur
+  let [inputclicked, setInputClicked] = useState(false);
+
+  //lion
+  const [lioncount, setLioncount] = useState(1);
+
+
   //top 메시지 변경
   const top = [
+    "",
     `반가워요 ${userInfo.name}님,\n재밌는 별명을 가지고 계신가요?`,
     `${userInfo.name}님은 어떤 학과 소속이신가요?`,
     `${userInfo.name}님의 연락처를 입력해주세요`,
     "거의 다 왔어요!\n이메일을 입력해주세요",
     "마지막으로 MBTI를 입력해주세요!",
   ];
-  const [topmsg, setTopmsg] = useState(top[0]);
-  const Changetopmsg = () => {
-    setTopmsg(top[count]);
-  };
 
   //plzmsg 바꾸기
   const plz = [
+    "",
     "닉네임을 입력해주세요",
     "학과를 입력해주세요",
     "연락처를 입력해주세요",
     "이메일을 입력해주세요",
     "MBTI를 입력해주세요",
   ];
-  const [plzmsg, setPlzmsg] = useState(plz[0]);
-  const Changeplz = () => {
-    setPlzmsg(plz[count]);
-  };
 
   //detailmsg 바꾸기
   const detail = [
+    "",
     "선택사항",
     "(예: 멋쟁이사자학과)",
     "전화번호 혹은 SNS 아이디를 입력해주세요",
     "학교 이메일을 입력해주세요 (예: likelion@hufs.ac.kr)",
     "알파벳 4글자를 입력해주세요 (예:ENTP)",
   ];
-  const [detailmsg, setDetailmsg] = useState(detail[0]);
-  const ChangeDetail = () => {
-    setDetailmsg(detail[count]);
-  };
 
     //input initmsg
-    const initinput = ['아기 사자',
+    const initinput = [
+        "",
+        '아기 사자',
         '정글탐험학과',
         '010-xxxx-xxxx / like****2023',
         'likelion@hufs.ac.kr',
         'CUTE'
     ];
-    const [initmsg, setInitmsg] = useState(initinput[0]);
-    const ChangeInit = () => {
-        setInitmsg(initinput[count]);
-    }
-
-    //input focus, blur
-        let [inputclicked, setInputClicked] = useState(false);
 
 
     //box 추가하기
@@ -223,9 +219,12 @@ function Info() {
         outline: none;
       }
     `;
+
+
     return <List>{input}</List>;
   };
 
+  
   const [inputbox, setInputbox] = useState([]);
 
     //값 저장 및 초기화
@@ -234,34 +233,6 @@ function Info() {
         setInput('');
 
     };
-
-  const poslist = ["106px", "147px", "190px", "232px"];
-  const prevlist = ["64px", "106px", "147px", "190px"];
-  const [pos, setPos] = useState("64px");
-  const [prevpos, setPrevpos] = useState("32px");
-
-    const Lion = () => {
-        if(count === 2) {
-            setPrevpos(prevlist[0]);
-            setPos(poslist[0]);
-        } else if(count === 3) {
-            setPrevpos(prevlist[1])
-            setPos(poslist[1])
-        } else if(count === 4) {
-            setPrevpos(prevlist[2])
-            setPos(poslist[2])
-        } else if(count === 5) {
-            setPrevpos(prevlist[3])
-            setPos(poslist[3])
-        }
-        // } else if(count === 6) {
-        //     setPrevpos('232px')
-        //     setPos('269px')
-        // } else if(count === 7) {
-        //     setPrevpos('269px')
-        //     setPos('308px')
-        // } 
-    }
     
 
 
@@ -281,18 +252,13 @@ function Info() {
                 });
             }
             else {
-                //msg 변경
-                setCount(prev => prev + 1);
-                Changetopmsg();
-                Changeplz();
-                ChangeDetail();
-                ChangeInit();
                 //값 저장 및 초기화
                 Send();
+                setCount((prev) => prev + 1);
                 //input 추가
                 setInputbox([...inputbox, addBox()]);
                 //사자
-                Lion();
+                setLioncount((prev) => prev + 1);
             }
         }
         else {
@@ -300,8 +266,7 @@ function Info() {
         };  
     };
     console.log(user);
-    console.log("여긴 info" + pos);
-
+    console.log(lioncount + "lioncount 입니다.")
 
     return (
         <>
@@ -309,20 +274,18 @@ function Info() {
             <Container>
                 <TopContainer>
                     <TopLion 
-                        count = {count}
-                        prevpos = {prevpos}
-                        pos = {pos} />
+                        lioncount = {lioncount} />
                 </TopContainer>
                 <Playground>
-                    <TopText> {topmsg} </TopText>
+                    <TopText> {top[count]} </TopText>
                     <Box>
                         <Box2>
-                            <InfoPleaseBox> {plzmsg} </InfoPleaseBox>
-                            <Detail> {detailmsg} </Detail>
+                            <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
+                            <Detail> {detail[count]} </Detail>
                         </Box2>
                         <InputInfo 
                             onChange={onChange} 
-                            placeholder={inputclicked === true ? "" : initmsg}
+                            placeholder={inputclicked === true ? "" : initinput[count]}
                             value={input}
                             onFocus={() => {setInputClicked(true)}}
                             onBlur={() => {setInputClicked(false)}}

@@ -8,6 +8,7 @@ import Three from "./Component/Three";
 import Slide from "./Component/Slide";
 import HomePage from "./Component/HomePage";
 import SelectTamplate from "./Component/SelectTamplate";
+import Share from './Component/Share';
 
 function Router() {
     return (
@@ -24,6 +25,7 @@ function Router() {
                 <Route path="/three" element={<Three />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/select-template" element={<SelectTamplate />} />
+                <Route path="/share" element={<Share />} />
             </Routes>
         </BrowserRouter>
   );

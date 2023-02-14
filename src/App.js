@@ -1,6 +1,6 @@
 import Router from "./router.js";
 import "./index.css";
-import Undermsg from "./Undermsg";
+import Undermsg from "./Component/Undermsg.js";
 import GlobalStyle from "./Component/GlobalStyle.js";
 
 function App() {

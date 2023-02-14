@@ -92,16 +92,13 @@ function Name() {
 
      //input focus, blur
     let [inputclicked, setInputClicked] = useState(false);
-
     return (
         <>
         <GlobalStyle />
             <Container>
                 <TopContainer>
                     <TopLion 
-                        count = {0}
-                        prevpos= {'32px'}
-                        pos = {'32px'} />
+                        lioncount = {0} />
                 </TopContainer>
                 <Playground>
                     <NameText>먼저 당신의 이름을 알려주세요</NameText>

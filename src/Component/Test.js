@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled, {keyframes} from "styled-components"
 import { useLocation } from "react-router-dom";
 
 function Test() {
@@ -11,7 +10,7 @@ function Test() {
     );
 
 
-
+  
     return (
         <>
             <div>여긴 test입니다.</div>

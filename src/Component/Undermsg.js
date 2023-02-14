@@ -1,4 +1,4 @@
-import { Under } from "../src/styles/basicStyles.js";
+import { Under } from "../styles/basicStyles";
 
 function Undermsg() {
   return (
