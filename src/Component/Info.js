@@ -240,7 +240,7 @@ function Info() {
         if(input.length >=1) {
             if(count === 5) {
               if(user.length === 5) {
-                navigate('/basic-card1', {
+                navigate('/basic-card3', {
                   state: { name: user[0],
                           nickname: user[1],
                           major: user[2],

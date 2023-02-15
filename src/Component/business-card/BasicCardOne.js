@@ -76,10 +76,6 @@ const BasicCardOne = ({ children }) => {
       location.state
   );
 
-  //이미지
-  
-
-
 
   return (
     <>
