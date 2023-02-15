@@ -299,7 +299,6 @@ function Info() {
                         onClick={onClick}
                         color = {color}
                     >다음 단계</Btn>
-                    <Undermsg />
                     
                 </Playground>
 
