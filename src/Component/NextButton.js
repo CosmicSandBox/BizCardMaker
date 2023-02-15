@@ -21,24 +21,24 @@ function NextButton({info, color, classN}) {
 
     console.log(color)
     //체크랑 네브랑 같이 쓸 수 있는 방법은 없을까.
-    // const check = () => {
-    //     if(name.length > 0) {
-    //         window.location.replace('/info');
-    //     }
-    //     else {
-    //         alert("이름을 입력하세요.");
-    //     };
-    // }
+    const Check = () => {
+        if(info.length >= 1) {
+            window.location.replace('/info');
+        }
+        else {
+            alert("이름을 입력하세요.");
+        };
+    }
     console.log(classN)
     const Nav = () => {
-        if(classN === "Name") {
+        if(info.length >= 1) {
             navigate('/Info', {
                 state: { name: info,
                 },
             });
         }
-        else if(classN === "Info") {
-            
+        else {
+            alert("정보을 입력하세요!");
         }
     }
 

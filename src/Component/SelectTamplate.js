@@ -35,7 +35,7 @@ const SelectTamplate = ({ userInfo }) => {
 
       <Container>
         <TopContainer>
-          <TopLion count={6} prevpos={36} pos={32} />
+          <TopLion lioncount={6} />
         </TopContainer>
         <Playground>
           <div style={{ height: "50vh" }}>

@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
 import Undermsg from "./Undermsg";
 import TopLion from "./TopLion";
+
 
 const Container = styled.div`
   width: 100%;
@@ -82,15 +83,17 @@ const Btn = styled.button`
   margin-bottom: 70px;
 `;
 
+//박스 목록 관리
 const InputBox = styled.div`
-  width: 87%;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  background-color: lightgray;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+    width: 87%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color: #fee79f;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 const Box2 = styled.div`
@@ -109,17 +112,21 @@ const Box2 = styled.div`
 `;
 
 const InputInfo = styled.input`
-  width: 85%;
-  height: 40px;
-  border-width: 1px;
-  background-color: transparent;
-  border: none;
-  font-size: 1rem;
-  border-bottom: solid 1px #94987e;
-  &:focus {
-    outline: none;
-  }
-`;
+    width: 83.5%;
+    height: 40px;
+    border-width: 1px;
+    background-color: transparent;
+    border:none;
+    font-size: 1rem;
+    border-bottom: solid 1px #94987E;
+    padding-left: 8px;
+    &:focus {
+        outline: none;
+    }
+    &::placeholder {
+        color: #D3D3D3;
+    }
+    `;
 
 function Info() {
   console.log("시작------");
@@ -129,7 +136,7 @@ function Info() {
   const location = useLocation();
   console.log("state", location.state);
 
-  const [userInfo, setUserInfo] = useState(location.state);
+  const [userInfo] = useState(location.state);
 
   //인풋값에 따른 버튼 색
   const [input, setInput] = useState("");
@@ -143,56 +150,67 @@ function Info() {
 
   //유저 정보 저장
   const [user, setUser] = useState([userInfo.name]);
+
   //count
   const [count, setCount] = useState(1);
+
+  //input focus, blur
+  let [inputclicked, setInputClicked] = useState(false);
+
+  //lion
+  const [lioncount, setLioncount] = useState(1);
+
+
   //top 메시지 변경
   const top = [
+    "",
     `반가워요 ${userInfo.name}님,\n재밌는 별명을 가지고 계신가요?`,
     `${userInfo.name}님은 어떤 학과 소속이신가요?`,
     `${userInfo.name}님의 연락처를 입력해주세요`,
     "거의 다 왔어요!\n이메일을 입력해주세요",
     "마지막으로 MBTI를 입력해주세요!",
   ];
-  const [topmsg, setTopmsg] = useState(top[0]);
-  const Changetopmsg = () => {
-    setTopmsg(top[count]);
-  };
 
   //plzmsg 바꾸기
   const plz = [
+    "",
     "닉네임을 입력해주세요",
     "학과를 입력해주세요",
     "연락처를 입력해주세요",
     "이메일을 입력해주세요",
     "MBTI를 입력해주세요",
   ];
-  const [plzmsg, setPlzmsg] = useState(plz[0]);
-  const Changeplz = () => {
-    setPlzmsg(plz[count]);
-  };
 
   //detailmsg 바꾸기
   const detail = [
+    "",
     "선택사항",
     "(예: 멋쟁이사자학과)",
     "전화번호 혹은 SNS 아이디를 입력해주세요",
     "학교 이메일을 입력해주세요 (예: likelion@hufs.ac.kr)",
     "알파벳 4글자를 입력해주세요 (예:ENTP)",
   ];
-  const [detailmsg, setDetailmsg] = useState(detail[0]);
-  const ChangeDetail = () => {
-    setDetailmsg(detail[count]);
-  };
 
-  //input 추가하기
-  const addBox = () => {
-    const List = styled.div`
-      width: 100%;
-      height: 50px;
-      background-color: transparent;
-      border: none;
-      border-top: solid 0.3px #94987e;
-      font-size: 1rem;
+    //input initmsg
+    const initinput = [
+        "",
+        '아기 사자',
+        '정글탐험학과',
+        '010-xxxx-xxxx / like****2023',
+        'likelion@hufs.ac.kr',
+        'CUTE'
+    ];
+
+
+    //box 추가하기
+    const addBox = () => {
+        const List = styled.div`
+            width: 100%;
+            height: 50px;
+            background-color: transparent;
+            border:none;
+            border-top: solid 0.3px #f7be7c;
+            font-size: 1rem;
 
       display: flex;
       justify-content: center;
@@ -201,93 +219,94 @@ function Info() {
         outline: none;
       }
     `;
+
+
     return <List>{input}</List>;
   };
 
+  
   const [inputbox, setInputbox] = useState([]);
 
-  //초기화
-  const inputRef = useRef(null);
-  const onReset = () => {
-    setInput("");
-  };
+    //값 저장 및 초기화
+    const Send = () => {
+        setUser(user => [...user, input]);
+        setInput('');
 
-  const poslist = ["106px", "147px", "190px", "232px"];
-  const prevlist = ["64px", "106px", "147px", "190px"];
-  const [pos, setPos] = useState("64px");
-  const [prevpos, setPrevpos] = useState("32px");
+    };
+    
 
-  const Lion = () => {
-    if (count === 2) {
-      setPrevpos(prevlist[0]);
-      setPos(poslist[0]);
-    } else if (count === 3) {
-      setPrevpos(prevlist[1]);
-      setPos(poslist[1]);
-    } else if (count === 4) {
-      setPrevpos(prevlist[2]);
-      setPos(poslist[2]);
-    } else if (count === 5) {
-      setPrevpos(prevlist[3]);
-      setPos(poslist[3]);
-    }
-    // } else if(count === 6) {
-    //     setPrevpos('232px')
-    //     setPos('269px')
-    // } else if(count === 7) {
-    //     setPrevpos('269px')
-    //     setPos('308px')
-    // }
-  };
 
-  //클릭
-  const onClick = () => {
-    if (count === 5) {
-      navigate("/select-template");
-    } else {
-      //msg 변경
-      setCount((prev) => prev + 1);
-      Changetopmsg();
-      Changeplz();
-      ChangeDetail();
-      //값 저장
-      setUser((user) => [...user, input]);
-      //값 초기화
-      onReset();
-      //input 추가
-      setInputbox([...inputbox, addBox()]);
-    }
-    //사자
-    Lion();
-  };
-  console.log(user);
-  console.log("여긴 info" + pos);
 
-  return (
-    <>
-      <GlobalStyle />
-      <Container>
-        <TopContainer>
-          <TopLion count={count} prevpos={prevpos} pos={pos} />
-        </TopContainer>
-        <Playground>
-          <TopText> {topmsg} </TopText>
-          <Box>
-            <Box2>
-              <InfoPleaseBox> {plzmsg} </InfoPleaseBox>
-              <Detail> {detailmsg} </Detail>
-            </Box2>
-            <InputInfo onChange={onChange} placeholder="이곳에 입력하세요" />
-            <InputBox>{inputbox.map((elem) => elem)}</InputBox>
-          </Box>
-          <Btn type="button" onClick={onClick} color={color}>
-            다음 단계
-          </Btn>
-          {/* <Undermsg /> */}
-        </Playground>
-      </Container>
-    </>
-  );
+    //클릭
+    const onClick = () => {
+        if(input.length >=1) {
+            if(count === 5) {
+                navigate('/test', {
+                    state: { name: user[0],
+                            nickname: user[1],
+                            major: user[2],
+                            contact: user[3],
+                            email: user[4],
+                            mbti: user[5]
+                    },
+                });
+            }
+            else {
+                //값 저장 및 초기화
+                Send();
+                setCount((prev) => prev + 1);
+                //input 추가
+                setInputbox([...inputbox, addBox()]);
+                //사자
+                setLioncount((prev) => prev + 1);
+            }
+        }
+        else {
+            alert("정보를 입력하세요!");
+        };  
+    };
+    console.log(user);
+    console.log(lioncount + "lioncount 입니다.")
+
+    return (
+        <>
+            <GlobalStyle />
+            <Container>
+                <TopContainer>
+                    <TopLion 
+                        lioncount = {lioncount} />
+                </TopContainer>
+                <Playground>
+                    <TopText> {top[count]} </TopText>
+                    <Box>
+                        <Box2>
+                            <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
+                            <Detail> {detail[count]} </Detail>
+                        </Box2>
+                        <InputInfo 
+                            onChange={onChange} 
+                            placeholder={inputclicked === true ? "" : initinput[count]}
+                            value={input}
+                            onFocus={() => {setInputClicked(true)}}
+                            onBlur={() => {setInputClicked(false)}}
+                            />
+                        <InputBox>
+                            {inputbox.map(elem => elem)}
+                        </InputBox>  
+                    </Box>
+                    <Btn
+                        type="button"
+                        onClick={onClick}
+                        color = {color}
+                    >다음 단계</Btn>
+                    <Undermsg />
+                    
+                </Playground>
+
+            </Container>
+
+        </>
+    );
 }
 
 export default Info;
