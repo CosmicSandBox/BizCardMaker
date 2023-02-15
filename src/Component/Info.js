@@ -234,19 +234,23 @@ function Info() {
 
     };
 
+
     //클릭
     const onClick = () => {
         if(input.length >=1) {
             if(count === 5) {
-                navigate('/test', {
-                    state: { name: user[0],
-                            nickname: user[1],
-                            major: user[2],
-                            contact: user[3],
-                            email: user[4],
-                            mbti: user[5]
+              if(user.length === 5) {
+                navigate('/basic-card1', {
+                  state: { name: user[0],
+                          nickname: user[1],
+                          major: user[2],
+                          contact: user[3],
+                          email: user[4],
+                          mbti: input
                     },
-                });
+                  });
+              }
+              
             }
             else {
                 //값 저장 및 초기화

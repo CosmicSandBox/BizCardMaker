@@ -62,10 +62,8 @@ const RTextBox = styled.div`
 const Text = styled.div`
   font-size: 11px;
   background-color: transparent;
-  margin-bottom: 6.3px
+  margin-bottom: 6.3px;
 `;
-
-
 
 
 
@@ -90,21 +88,21 @@ const BasicCardOne = ({ children }) => {
         <LeftBox>
           <TextBox>
             <Text style={{paddingLeft: "4px"}}>
-              Global Business&Technology학부</Text>
+              {userInfo.major}</Text>
             <Text style={{paddingLeft: "7px", marginBottom: "8px"}}>
-              kye1115z@hufs.ac.kr</Text>
-            <Text style={{paddingLeft: "8px", marginBottom: "8.2px"}}>
-              010-2990-0251</Text>
-            <Text >ESFJ</Text>   
+              {userInfo.email}</Text>
+            <Text style={{paddingLeft: "8px", marginBottom: "8.1px"}}>
+              {userInfo.contact}</Text>
+            <Text>{userInfo.mbti}</Text>   
           </TextBox>    
         </LeftBox>
 
         <RBox>
           <RTextBox>
             <Text style={{fontSize: "1.3rem", fontWeight: "bold"}}>
-              김예은</Text>
+              {userInfo.name}</Text>
             <Text style={{fontSize: "0.9rem", color: "lightgray"}}>
-              봉황의 기운</Text>
+              {userInfo.nickname}</Text>
           </RTextBox>
         </RBox>
 
