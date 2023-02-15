@@ -9,6 +9,7 @@ import Slide from "./Component/Slide";
 import HomePage from "./Component/HomePage";
 import SelectTamplate from "./Component/SelectTamplate";
 import Share from './Component/Share';
+import BasicCardOne from './Component/business-card/BasicCardOne';
 
 function Router() {
     return (
@@ -25,6 +26,7 @@ function Router() {
                 <Route path="/three" element={<Three />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/select-template" element={<SelectTamplate />} />
+                <Route path="/basic-card1" element={<BasicCardOne />} />
                 <Route path="/share" element={<Share />} />
             </Routes>
         </BrowserRouter>

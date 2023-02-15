@@ -233,9 +233,6 @@ function Info() {
         setInput('');
 
     };
-    
-
-
 
     //클릭
     const onClick = () => {
@@ -259,6 +256,8 @@ function Info() {
                 setInputbox([...inputbox, addBox()]);
                 //사자
                 setLioncount((prev) => prev + 1);
+                //색 초기화
+                setColor("#D3D3D3")
             }
         }
         else {
