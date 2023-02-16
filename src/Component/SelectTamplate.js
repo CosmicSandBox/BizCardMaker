@@ -8,8 +8,11 @@ import {
   Playground,
   Btn,
 } from "../styles/basicStyles";
+import { useLocation } from "react-router";
 
-const SelectTamplate = ({ userInfo }) => {
+const SelectTamplate = ({}) => {
+  const { userInfo } = useLocation();
+
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedTemplate, setSelectedTemplate] = useState({
     front: null,

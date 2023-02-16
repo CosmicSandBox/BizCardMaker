@@ -7,6 +7,7 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 const name = (type) => `PavingStones092_1K_${type}.jpg`;
 
 function Box({ position, imgSrc }) {
+  const logoImg = "/logo192.png";
   const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] = useLoader(
     TextureLoader,
     [imgSrc, imgSrc, imgSrc, imgSrc, imgSrc]
@@ -45,8 +46,17 @@ function Box({ position, imgSrc }) {
         // aoMap={aoMap} //얘가 뒷면 같고
         color={"white"}
       /> */}
-      <boxGeometry args={[4, 2, 0.03]} />
-      <meshStandardMaterial normalMap={normalMap} />
+      <boxGeometry args={[5, 3, 0.02]} />
+      {/* <meshStandardMaterial normalMap={normalMap} aoMap={aoMap} /> */}
+      <meshStandardMaterial
+        displacementScale={0.2}
+        map={colorMap} // 칼라 포함해서 사진 그나마 제대로 나옴
+        // displacementMap={displacementMap} // 서로 떨어지는 효과?
+        // normalMap={normalMap} //얘가 앞면 같고? 근데 색깔이 날아감 흑백같아짐
+        // roughnessMap={roughnessMap} // 모임?
+        aoMap={aoMap} // 모임?
+        // color={"white"}
+      />
       <Html
         style={{
           transition: "all 0.2s",
@@ -59,16 +69,28 @@ function Box({ position, imgSrc }) {
         occlude
         // onOcclude={setVisible}
       >
-        <span
+        <div
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             fontSize: "150px",
             background: "pink",
-            width: "100%",
+            width: "240rem",
+            height: "140rem",
             display: "flex",
+            backgroundColor: "black",
           }}
         >
-          Size hi
-        </span>
+          <img
+            style={{
+              width: "40rem",
+              height: "40rem",
+            }}
+            src="/logo192.png"
+          ></img>
+          {/* Size hi */}
+        </div>
       </Html>
     </mesh>
   );
@@ -78,10 +100,17 @@ export default function App({ imgSrc }) {
   return (
     <>
       <Canvas className={`canvas`} style={{ height: "50vh" }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} />
-        {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} /> */}
-        {/* <pointLight position={[-10, -10, -10]} /> */}
+        {/* //앞뒤 다 밝게 나옴 */}
+        <ambientLight intensity={25} />
+
+        {/* //앞만 밝게 나옴 */}
+        {/* <directionalLight position={[10, 5, 10]} /> */}
+
+        {/* 가운데 위주로 밝게 뒤는 안나옴  */}
+        {/* <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} /> */}
+
+        {/* //한쪽만만 밝게 나옴 */}
+        {/* <pointLight position={[10, 10, 10]} /> */}
         <Box imgSrc={imgSrc} />
         {/* <Box position={[1.2, 0, 0]} /> */}
         <OrbitControls />
