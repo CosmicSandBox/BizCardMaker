@@ -1,7 +1,8 @@
-import { FacebookIcon, TwitterIcon, FacebookShareButton, PinterestShareButton, TwitterShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, FacebookShareButton, TwitterShareButton } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { shareKakao } from "../utils/shareKakaoLink";
 import { useEffect } from "react";
+import styled from "styled-components";
 
 
 function Share() {
@@ -16,15 +17,11 @@ function Share() {
         return () => document.body.removeChild(script);
     }, []);
 
-
-    
-    
-
     if (navigator.share) {
         navigator.share({
             title: '내 생애 첫 명함',
             text: '명함 한 번 만들어보고 싶묘? 그럼 들어와보묘~🐰',
-            url: '/name',
+            url: '/',
         })
           .then(() => console.log('공유 성공'))
           .catch((error) => console.log('공유 실패', error));
@@ -35,9 +32,9 @@ function Share() {
       const handle = () => {
         if (navigator.share) {
             navigator.share({
-                title: '기록하며 성장하기',
-                text: 'Hello World',
-                url: 'https://shinsangeun.github.io',
+                title: '내 생애 첫 명함',
+                text: '명함 한 번 만들어보고 싶묘? 그럼 들어와보묘~🐰',
+                url: '/',
             });
         }else{
             alert("공유하기가 지원되지 않는 환경 입니다.")
@@ -49,20 +46,44 @@ function Share() {
   
     return (
         <>
-            <FacebookShareButton url="/name">
-                <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
-            </FacebookShareButton>
-            <TwitterShareButton url="/name">
-                <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
-            </TwitterShareButton>
-
-            <CopyToClipboard text={"/name"}>
-					<button>URL</button>
-			</CopyToClipboard>
-            <button onClick={() => {shareKakao("/home", "내 생애 첫 명함")}}>카카오</button>
-            <button>4</button>
+            <div
+                style={{width: "100%"}}>
+                {/* 카카오 */}
+                <BTN 
+                    onClick={() => {shareKakao("/", "내 생애 첫 명함")}}>
+                        <Img src="img/kakaotalk_logo.png" />
+                </BTN>
+                {/* 페이스북 */}
+                <FacebookShareButton url="/name">
+                    <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
+                </FacebookShareButton>
+                {/* 트위터 */}
+                <TwitterShareButton url="/name">
+                    <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
+                </TwitterShareButton>
+                {/* url 복사 */}
+                <CopyToClipboard text={"http://localhost:3000/"}>
+                        <BTN>
+                            <Img src="img/url.png"
+                                style={{border: "solid 1px black"}} />
+                        </BTN>
+                </CopyToClipboard>
+                {/* 기타 */}
+                {/* <button onClick={handle}>기타</button> */}
+            </div>
         </>
     );
 }
+
+const Img = styled.img`
+    width: 46.5px;
+    height: 46.5px;
+    border-radius: 50%;
+`;
+
+const BTN = styled.button`
+    background-color: transparent;
+    border: none;
+`;
 
 export default Share;

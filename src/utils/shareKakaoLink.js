@@ -2,8 +2,7 @@ export const shareKakao = (route, title) => { // url이 id값에 따라 변경�
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
-        // kakao.init(process.env.REACT_APP_SHARE_KAKAO_LINK_KEY);
-        kakao.init("105025b8e877139f01383d68d0d24980"); // 카카오에서 제공받은 javascript key를 넣어줌 -> .env파일에서 호출시킴
+        kakao.init("105025b8e877139f01383d68d0d24980");
       }
   
       kakao.Link.sendDefault({
