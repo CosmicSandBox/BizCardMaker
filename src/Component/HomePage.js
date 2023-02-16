@@ -16,6 +16,7 @@ const HomePage = ({}) => {
         <div>
           <div>너만의 명함을</div>
           <div>
+
             <div>만들어봐재우!asdasd!</div>
             {/* <img></img> */}
           </div>
