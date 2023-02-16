@@ -9,6 +9,10 @@ import {
   Btn,
 } from "../styles/basicStyles";
 import { useLocation } from "react-router";
+import BasicCardOne from "./business-card/BasicCardOne";
+import BasicCardTwo from "./business-card/BasicCardTwo";
+import BasicCardThree from "./business-card/BasicCardThree";
+import CardBackSide from "./business-card/CardBackSide";
 
 const SelectTamplate = ({}) => {
   const { userInfo } = useLocation();
@@ -18,7 +22,12 @@ const SelectTamplate = ({}) => {
     front: null,
     back: null,
   });
-  const [selectedBackColor, setSelectedBackColor] = useState(null);
+
+  const [selectedFrontCard, setSelectedFrontCard] = useState(null);
+  const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
+  const [selectedBackLogo, setSelectedBackLogo] = useState(null);
+  // console.log(selectedBackLogo);
+
   const backSideColor = [
     "#F51212",
     "#FF7A00",
@@ -28,6 +37,34 @@ const SelectTamplate = ({}) => {
     "#142745",
     "#7000FF",
   ];
+  const backLogo = [
+    "logo01.png",
+    "logo02.png",
+    "logo03.png",
+    "logo04.png",
+    "logo05.png",
+    "logo06.png",
+    "logo07.png",
+    "logo08.png",
+    "logo09.png",
+    "logo10.png",
+  ];
+  const renderBackCard = () => {
+    const result = [];
+    for (let i = 0; i < backLogo.length; i++) {
+      result.push(
+        <CardBackSide
+          bgColor={selectedBackColor}
+          icon={backLogo[i]}
+          pickedEvent={(e) => {
+            setSelectedBackLogo(e);
+          }}
+        />
+      );
+    }
+    return result;
+  };
+
   const select = (templateIndex) => {
     setSide("back");
   };
@@ -38,7 +75,7 @@ const SelectTamplate = ({}) => {
 
       <Container>
         <TopContainer>
-          <TopLion lioncount={6} />
+          <TopLion lioncount={side === "front" ? 6 : 7} />
         </TopContainer>
         <Playground>
           <div style={{ height: "50vh" }}>
@@ -46,18 +83,29 @@ const SelectTamplate = ({}) => {
               photos={
                 side === "front"
                   ? [
-                      <h3 style={{ height: "30%" }}>1</h3>,
-                      <h3 style={{ height: "30%" }}>2</h3>,
-                      <h3 style={{ height: "30%" }}>3</h3>,
+                      <BasicCardOne
+                        pickedEvent={(e) => {
+                          setSelectedFrontCard(e);
+                        }}
+                      />,
+                      <BasicCardTwo
+                        pickedEvent={(e) => {
+                          setSelectedFrontCard(e);
+                        }}
+                      />,
+                      <BasicCardThree
+                        pickedEvent={(e) => {
+                          setSelectedFrontCard(e);
+                        }}
+                      />,
                     ]
-                  : [<h3 style={{ height: "30%" }}>1</h3>]
+                  : renderBackCard()
               }
               pickEvent={(index) => {
                 setSelectedTemplate({ ...selectedTemplate, side: index });
               }}
             ></Slide>
-          </div>
-
+          </div>{" "}
           {side === "back" && (
             <div>
               <div>
@@ -84,7 +132,6 @@ const SelectTamplate = ({}) => {
               </div>
             </div>
           )}
-
           <Btn type="button" onClick={select} color={"#FF7A00"}>
             다음 단계
           </Btn>

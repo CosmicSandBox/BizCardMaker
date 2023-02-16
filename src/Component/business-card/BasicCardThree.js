@@ -12,7 +12,6 @@ const BizContainer = styled.div`
   align-items: flex-end;
 `;
 
-
 const TopBox = styled.div`
   width: 54.7%;
   height: 20%;
@@ -55,50 +54,53 @@ const Text = styled.div`
   margin-bottom: 6.3px;
 `;
 
-
-
-const BasicCardTwo = ({ children }) => {
-
+const BasicCardThree = ({ children, pickedEvent }) => {
   const location = useLocation();
-  console.log('state', location.state);
-  
-  const [userInfo] = useState(
-      location.state
-  );
+  // console.log("state", location.state);
 
-  
-
-
+  const [userInfo] = useState(location.state);
 
   return (
     <>
       <div>{children}</div>
-      <BizContainer style={{backgroundImage: "url(/img/008.jpg)"}}>
+      <BizContainer
+        style={{ backgroundImage: "url(/img/008.jpg)" }}
+        onClick={() => {
+          pickedEvent(3);
+        }}
+      >
         <TopBox>
-            <TTextBox>
-                <Text style={{fontSize: "1.3rem", fontWeight: "bold"}}>
-                {userInfo.name}</Text>
-                <Text style={{fontSize: "0.9rem", color: "lightgray", paddingTop: "2.5%"}}>
-                &nbsp; {'<'} {userInfo.nickname} {'>'}</Text>
-            </TTextBox>
- 
+          <TTextBox>
+            <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+              {userInfo.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: "0.9rem",
+                color: "lightgray",
+                paddingTop: "2.5%",
+              }}
+            >
+              &nbsp; {"<"} {userInfo.nickname} {">"}
+            </Text>
+          </TTextBox>
         </TopBox>
 
         <BottomBox>
-            <BTextBox>
-                <Text style={{paddingLeft: "4.3px"}}>
-                {userInfo.major}</Text>
-                <Text style={{paddingLeft: "7px", marginBottom: "9.36px"}}>
-                {userInfo.email}</Text>
-                <Text style={{paddingLeft: "8px", marginBottom: "9.27px"}}>
-                {userInfo.contact}</Text>
-                <Text>{userInfo.mbti}</Text>   
-            </BTextBox>   
+          <BTextBox>
+            <Text style={{ paddingLeft: "4.3px" }}>{userInfo.major}</Text>
+            <Text style={{ paddingLeft: "7px", marginBottom: "9.36px" }}>
+              {userInfo.email}
+            </Text>
+            <Text style={{ paddingLeft: "8px", marginBottom: "9.27px" }}>
+              {userInfo.contact}
+            </Text>
+            <Text>{userInfo.mbti}</Text>
+          </BTextBox>
         </BottomBox>
-
       </BizContainer>
     </>
   );
 };
 
-export default BasicCardTwo;
+export default BasicCardThree;

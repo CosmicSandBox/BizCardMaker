@@ -10,7 +10,6 @@ const BizContainer = styled.div`
   display: flex;
 `;
 
-
 const LeftBox = styled.div`
   width: 60%;
   height: 100%;
@@ -65,43 +64,44 @@ const Text = styled.div`
   margin-bottom: 6.3px;
 `;
 
-
-
-const BasicCardOne = ({ children }) => {
-
+const BasicCardOne = ({ children, pickedEvent }) => {
   const location = useLocation();
-  console.log('state', location.state);
-  
-  const [userInfo] = useState(
-      location.state
-  );
+  // console.log("state", location.state);
 
+  const [userInfo] = useState(location.state);
 
   return (
     <>
       <div>{children}</div>
-      <BizContainer style={{backgroundImage: "url(/img/004.jpg)"}}>
+      <BizContainer
+        style={{ backgroundImage: "url(/img/004.jpg)" }}
+        onClick={() => {
+          pickedEvent(1);
+        }}
+      >
         <LeftBox>
           <TextBox>
-            <Text style={{paddingLeft: "4px"}}>
-              {userInfo.major}</Text>
-            <Text style={{paddingLeft: "7px", marginBottom: "8px"}}>
-              {userInfo.email}</Text>
-            <Text style={{paddingLeft: "8px", marginBottom: "8.1px"}}>
-              {userInfo.contact}</Text>
-            <Text>{userInfo.mbti}</Text>   
-          </TextBox>    
+            <Text style={{ paddingLeft: "4px" }}>{userInfo.major}</Text>
+            <Text style={{ paddingLeft: "7px", marginBottom: "8px" }}>
+              {userInfo.email}
+            </Text>
+            <Text style={{ paddingLeft: "8px", marginBottom: "8.1px" }}>
+              {userInfo.contact}
+            </Text>
+            <Text>{userInfo.mbti}</Text>
+          </TextBox>
         </LeftBox>
 
         <RBox>
           <RTextBox>
-            <Text style={{fontSize: "1.3rem", fontWeight: "bold"}}>
-              {userInfo.name}</Text>
-            <Text style={{fontSize: "0.9rem", color: "lightgray"}}>
-              {userInfo.nickname}</Text>
+            <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+              {userInfo.name}
+            </Text>
+            <Text style={{ fontSize: "0.9rem", color: "lightgray" }}>
+              {userInfo.nickname}
+            </Text>
           </RTextBox>
         </RBox>
-
       </BizContainer>
     </>
   );
