@@ -48,4 +48,4 @@ function TopLion({lioncount}) {
     );
 }
 
-export default TopLion;
+export default React.memo(TopLion);

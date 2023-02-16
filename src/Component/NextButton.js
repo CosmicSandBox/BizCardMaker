@@ -13,6 +13,11 @@ const Btn = styled.button`
     color: white;
     font-size: 16px;
     margin-bottom: 70px;
+
+    &:active {
+        position: relative;
+        transform: scale(0.95);
+      }
     `;
 
 

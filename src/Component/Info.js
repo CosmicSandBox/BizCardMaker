@@ -222,77 +222,88 @@ function Info() {
 
   const [inputbox, setInputbox] = useState([]);
 
-  //값 저장 및 초기화
-  const Send = () => {
-    setUser((user) => [...user, input]);
-    setInput("");
-  };
+    //값 저장 및 초기화
+    const Send = () => {
+        setUser(user => [...user, input]);
+        setInput('');
 
-  //클릭
-  const onClick = () => {
-    if (input.length >= 1) {
-      if (count === 5) {
-        navigate("/select-template", {
-          state: {
-            name: user[0],
-            nickname: user[1],
-            major: user[2],
-            contact: user[3],
-            email: user[4],
-            mbti: user[5],
-          },
-        });
-      } else {
-        //값 저장 및 초기화
-        Send();
-        setCount((prev) => prev + 1);
-        //input 추가
-        setInputbox([...inputbox, addBox()]);
-        //사자
-        setLioncount((prev) => prev + 1);
-      }
-    } else {
-      alert("정보를 입력하세요!");
-    }
-  };
-  console.log(user);
-  console.log(lioncount + "lioncount 입니다.");
+    };
 
-  return (
-    <>
-      <GlobalStyle />
-      <Container>
-        <TopContainer>
-          <TopLion lioncount={lioncount} />
-        </TopContainer>
-        <Playground>
-          <TopText> {top[count]} </TopText>
-          <Box>
-            <Box2>
-              <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
-              <Detail> {detail[count]} </Detail>
-            </Box2>
-            <InputInfo
-              onChange={onChange}
-              placeholder={inputclicked === true ? "" : initinput[count]}
-              value={input}
-              onFocus={() => {
-                setInputClicked(true);
-              }}
-              onBlur={() => {
-                setInputClicked(false);
-              }}
-            />
-            <InputBox>{inputbox.map((elem) => elem)}</InputBox>
-          </Box>
-          <Btn type="button" onClick={onClick} color={color}>
-            다음 단계
-          </Btn>
-          <Undermsg />
-        </Playground>
-      </Container>
-    </>
-  );
+
+    //클릭
+    const onClick = () => {
+        if(input.length >=1) {
+            if(count === 5) {
+              if(user.length === 5) {
+                navigate('/select-template', {
+                  state: { name: user[0],
+                          nickname: user[1],
+                          major: user[2],
+                          contact: user[3],
+                          email: user[4],
+                          mbti: input
+                    },
+                  });
+              }
+              
+            }
+            else {
+                //값 저장 및 초기화
+                Send();
+                setCount((prev) => prev + 1);
+                //input 추가
+                setInputbox([...inputbox, addBox()]);
+                //사자
+                setLioncount((prev) => prev + 1);
+                //색 초기화
+                setColor("#D3D3D3")
+            }
+        }
+        else {
+            alert("정보를 입력하세요!");
+        };  
+    };
+    console.log(user);
+    console.log(lioncount + "lioncount 입니다.")
+
+    return (
+        <>
+            <GlobalStyle />
+            <Container>
+                <TopContainer>
+                    <TopLion 
+                        lioncount = {lioncount} />
+                </TopContainer>
+                <Playground>
+                    <TopText> {top[count]} </TopText>
+                    <Box>
+                        <Box2>
+                            <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
+                            <Detail> {detail[count]} </Detail>
+                        </Box2>
+                        <InputInfo 
+                            onChange={onChange} 
+                            placeholder={inputclicked === true ? "" : initinput[count]}
+                            value={input}
+                            onFocus={() => {setInputClicked(true)}}
+                            onBlur={() => {setInputClicked(false)}}
+                            />
+                        <InputBox>
+                            {inputbox.map(elem => elem)}
+                        </InputBox>  
+                    </Box>
+                    <Btn
+                        type="button"
+                        onClick={onClick}
+                        color = {color}
+                    >다음 단계</Btn>
+                    
+                </Playground>
+
+            </Container>
+
+        </>
+    );
 }
 
 export default Info;
