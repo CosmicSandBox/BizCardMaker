@@ -6,11 +6,11 @@ const Bar = styled.div`
   background-color: #96DB85;
   margin: 0 auto;
   position: absolute;
-  margin-top: 20px;
+  margin-top: 15px;
 `;
 const Prograss = styled.img`
   width: 90%;
-  height: 70%;
+  height: 65%;
   z-index: 2;
   margin: 0 auto;
   background-color: transparent;
@@ -55,6 +55,7 @@ function TopLion({ lioncount }) {
     background-color: transparent;
     left: ${endpos[lioncount]};
     animation: ${Move} 2s 0s alternate 1;
+    top: -0.2rem;
   `;
   return (
     <>
