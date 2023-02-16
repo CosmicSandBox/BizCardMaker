@@ -19,6 +19,7 @@ const TopContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const Playground = styled.div`
@@ -234,7 +235,7 @@ function Info() {
         if(input.length >=1) {
             if(count === 5) {
               if(user.length === 5) {
-                navigate('/basic-card1', {
+                navigate('/select-template', {
                   state: { name: user[0],
                           nickname: user[1],
                           major: user[2],
