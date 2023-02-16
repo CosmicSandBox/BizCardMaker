@@ -26,7 +26,7 @@ const HomePage = ({}) => {
           <div>손가락으로 이리저리 돌려보세요!</div>
         </div>
 
-        <button>start</button>
+        <button onClick={()=>{window.location.replace("/name")}}>start</button>
       </section>
       <style jsx>{`
         section.home {

@@ -10,7 +10,6 @@ const Gray = styled.div`
 `;
 
 function TopLion({lioncount}) {
-    console.log("toplion: " + lioncount)
     //2rem = name start, 사자 처음값
     const startpos = ['2rem', '2rem', '4.5rem', '7rem', '9.5rem', '12rem', '14.5rem', '17rem']
     const endpos = ['2rem', '4.5rem', '7rem', '9.5rem', '12rem', '14.5rem', '17rem', '19.5rem']

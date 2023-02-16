@@ -9,7 +9,6 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 100%;
 `;
 
 const TopContainer = styled.div`
@@ -63,7 +62,7 @@ const Detail = styled.div`
 
 const Box = styled.div`
   margin: 0 auto;
-  width: 87%;
+  width: 90%;
   height: 400px;
   display: flex;
   flex-wrap: wrap;

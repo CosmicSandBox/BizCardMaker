@@ -9,7 +9,6 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 100%;
 `;
 
 const TopContainer = styled.div`
@@ -23,7 +22,7 @@ const TopContainer = styled.div`
 `;
 
 const Playground = styled.div`
-  width: 90%;
+  width: 83%;
   height: 655px;
   margin: 0 auto;
   padding-top: 49px;
@@ -58,7 +57,7 @@ const Detail = styled.div`
 `;
 
 const Form = styled.form`
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -66,7 +65,7 @@ const Form = styled.form`
   padding-left: 26px;
 `;
 const InputName = styled.input`
-  width: 80%;
+  width: 90%;
   height: 40px;
   padding-left: 5px;
   border-width: 1px;
@@ -116,7 +115,6 @@ function Name() {
             />
           </Form>
           <NextButton info={input} color={color} classN={"Name"} />
-          <Undermsg />
         </Playground>
       </Container>
     </>
