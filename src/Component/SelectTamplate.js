@@ -46,8 +46,6 @@ const SelectTamplate = ({}) => {
     "logo06.png",
     "logo07.png",
     "logo08.png",
-    "logo09.png",
-    "logo10.png",
   ];
   const renderBackCard = () => {
     const result = [];

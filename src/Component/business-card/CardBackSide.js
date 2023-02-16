@@ -18,7 +18,10 @@ const CardBackSide = ({ bgColor, icon, pickedEvent }) => {
           pickedEvent(icon);
         }}
       >
-        <img src={`/bizIcon/${icon}`} style={{ width: "3rem" }}></img>
+        <img
+          src={`/bizIcon/${icon}`}
+          style={{ width: "3rem", background: "transparent" }}
+        ></img>
       </div>
       {/* </BasicCard> */}
     </>
