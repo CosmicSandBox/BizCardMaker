@@ -1,6 +1,7 @@
 import React from "react";
 import Three from "./Three";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Section = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const JW = styled.div`
 
 
 const HomePage = ({}) => {
+  const navigate = useNavigate();
   return (
     <>
       <Section>
@@ -52,7 +54,7 @@ const HomePage = ({}) => {
         </Bizcard>
 
 
-        <button onClick={()=>{window.location.replace("/name")}}>start</button>
+        <button onClick={()=>{navigate("/name")}}>start</button>
       </Section>
 
     </>
