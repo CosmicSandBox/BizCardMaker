@@ -46,8 +46,7 @@ function Share() {
   
     return (
         <>
-            <div
-                style={{width: "100%"}}>
+            <Container>
                 {/* 카카오 */}
                 <BTN 
                     onClick={() => {shareKakao("/", "내 생애 첫 명함")}}>
@@ -64,16 +63,26 @@ function Share() {
                 {/* url 복사 */}
                 <CopyToClipboard text={"http://localhost:3000/"}>
                         <BTN>
-                            <Img src="img/url.png"
-                                style={{border: "solid 1px black"}} />
+                            <URL>URL</URL>
                         </BTN>
                 </CopyToClipboard>
                 {/* 기타 */}
                 {/* <button onClick={handle}>기타</button> */}
-            </div>
+            </Container>
         </>
     );
 }
+
+const Container = styled.div`
+    //부모 컴포넌트에 share 감싸는 box 지정해주셨으면 width 100%로 변경해서 사용하셔도 될 것 같습니다. 
+    //제가 보기 편하려고 80% 한 거예용, height도 입맛에 맞게 바꾸세용
+    width: 80%;
+    height: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
 
 const Img = styled.img`
     width: 46.5px;
@@ -84,6 +93,19 @@ const Img = styled.img`
 const BTN = styled.button`
     background-color: transparent;
     border: none;
+    padding: 0;
+`;
+
+const URL = styled.div`
+    width: 46.5px;
+    height: 46.5px;
+    border-radius: 50%;
+    background-color: darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: ivory
 `;
 
 export default Share;

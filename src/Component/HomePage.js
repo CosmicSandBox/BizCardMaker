@@ -1,48 +1,60 @@
 import React from "react";
 import Three from "./Three";
+import styled from "styled-components";
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+`;
+
+
+
+const Bizcard = styled.div`
+  width: 50vh;
+  background-color: pink;
+`;
+
+const JW = styled.div`
+  background-color: black;
+`;
+
+
+
 
 const HomePage = ({}) => {
   return (
     <>
-      <section className={`home`}>
-        <div>
-          <div>
+      <Section>
+          {/* 이 부분 새로 만드시는 게 편할 것 같아요 */}
+        <JW>
             <div>아직도 명함 없는</div>
             <div>한국외대생이 있다부?</div>
-          </div>
           <div>{/* <img src=""></img> */}</div>
-        </div>
+        </JW>
 
         <div>
           <div>너만의 명함을</div>
           <div>
-            <div>만들어봐dfd!</div>
+
+            <div>만들어봐재우!asdasasdasdsadd!</div>
             {/* <img></img> */}
           </div>
         </div>
+        {/* 여기까지 알아서~ */}
 
-        <div className={`biz-card`}>
+        <Bizcard>
           <Three imgSrc={"/biz_card_sample.svg"} />
           <div>손가락으로 이리저리 돌려보세요!</div>
-        </div>
+        </Bizcard>
+
 
         <button onClick={()=>{window.location.replace("/name")}}>start</button>
-      </section>
-      <style jsx>{`
-        section.home {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+      </Section>
 
-          height: 100vh;
-
-          .biz-card {
-            width: 50vw;
-            background-color: pink;
-          }
-        }
-      `}</style>
     </>
   );
 };

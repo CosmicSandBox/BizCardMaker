@@ -2,11 +2,20 @@ import React from "react";
 import styled, {keyframes} from "styled-components"
 
 
-const Gray = styled.div`
+const Bar = styled.div`
     width: 90%;
-    height: 8px;
-    background-color: lightgray;
+    height: 13px;
+    background-color: #96DB85;
     position: relative;
+`;
+
+const Prograss = styled.img`
+    width: 80%;
+    height: 5%;
+    position: absolute;
+    margin: auto 0;
+    background-color: transparent;
+    top: 5.7vh;
 `;
 
 function TopLion({lioncount}) {
@@ -38,9 +47,9 @@ function TopLion({lioncount}) {
 
     return (
         <>
-            <Gray></Gray>
+            <Bar></Bar>
 
-
+                    <Prograss src="img/prograss.png" />
                     <Img src="img/lion.png" />
 
         </>

@@ -53,6 +53,7 @@ const Text = styled.div`
   font-size: 10.3px;
   background-color: transparent;
   margin-bottom: 6.3px;
+  color: #484340;
 `;
 
 
@@ -78,7 +79,7 @@ const BasicCardTwo = ({ children }) => {
             <TTextBox>
                 <Text style={{fontSize: "1.3rem", fontWeight: "bold"}}>
                 {userInfo.name}</Text>
-                <Text style={{fontSize: "0.9rem", color: "lightgray", paddingTop: "2.5%"}}>
+                <Text style={{fontSize: "0.9rem", color: "#8F8F8F", paddingTop: "2.5%"}}>
                 &nbsp; {'<'} {userInfo.nickname} {'>'}</Text>
             </TTextBox>
  
