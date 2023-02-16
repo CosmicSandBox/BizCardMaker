@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 812px;
+  height: 100%;
 `;
 
 export const TopContainer = styled.div`

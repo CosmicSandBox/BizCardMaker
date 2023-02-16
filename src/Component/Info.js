@@ -5,12 +5,11 @@ import styled from "styled-components";
 import Undermsg from "./Undermsg";
 import TopLion from "./TopLion";
 
-
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 812px;
+  height: 100%;
 `;
 
 const TopContainer = styled.div`
@@ -85,15 +84,15 @@ const Btn = styled.button`
 
 //박스 목록 관리
 const InputBox = styled.div`
-    width: 87%;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    background-color: #fee79f;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 87%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  background-color: #fee79f;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 const Box2 = styled.div`
@@ -112,21 +111,21 @@ const Box2 = styled.div`
 `;
 
 const InputInfo = styled.input`
-    width: 83.5%;
-    height: 40px;
-    border-width: 1px;
-    background-color: transparent;
-    border:none;
-    font-size: 1rem;
-    border-bottom: solid 1px #94987E;
-    padding-left: 8px;
-    &:focus {
-        outline: none;
-    }
-    &::placeholder {
-        color: #D3D3D3;
-    }
-    `;
+  width: 83.5%;
+  height: 40px;
+  border-width: 1px;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  border-bottom: solid 1px #94987e;
+  padding-left: 8px;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #d3d3d3;
+  }
+`;
 
 function Info() {
   console.log("시작------");
@@ -160,7 +159,6 @@ function Info() {
   //lion
   const [lioncount, setLioncount] = useState(1);
 
-
   //top 메시지 변경
   const top = [
     "",
@@ -191,26 +189,25 @@ function Info() {
     "알파벳 4글자를 입력해주세요 (예:ENTP)",
   ];
 
-    //input initmsg
-    const initinput = [
-        "",
-        '아기 사자',
-        '정글탐험학과',
-        '010-xxxx-xxxx / like****2023',
-        'likelion@hufs.ac.kr',
-        'CUTE'
-    ];
+  //input initmsg
+  const initinput = [
+    "",
+    "아기 사자",
+    "정글탐험학과",
+    "010-xxxx-xxxx / like****2023",
+    "likelion@hufs.ac.kr",
+    "CUTE",
+  ];
 
-
-    //box 추가하기
-    const addBox = () => {
-        const List = styled.div`
-            width: 100%;
-            height: 50px;
-            background-color: transparent;
-            border:none;
-            border-top: solid 0.3px #f7be7c;
-            font-size: 1rem;
+  //box 추가하기
+  const addBox = () => {
+    const List = styled.div`
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      border-top: solid 0.3px #f7be7c;
+      font-size: 1rem;
 
       display: flex;
       justify-content: center;
@@ -220,93 +217,82 @@ function Info() {
       }
     `;
 
-
     return <List>{input}</List>;
   };
 
-  
   const [inputbox, setInputbox] = useState([]);
 
-    //값 저장 및 초기화
-    const Send = () => {
-        setUser(user => [...user, input]);
-        setInput('');
+  //값 저장 및 초기화
+  const Send = () => {
+    setUser((user) => [...user, input]);
+    setInput("");
+  };
 
-    };
-    
+  //클릭
+  const onClick = () => {
+    if (input.length >= 1) {
+      if (count === 5) {
+        navigate("/select-template", {
+          state: {
+            name: user[0],
+            nickname: user[1],
+            major: user[2],
+            contact: user[3],
+            email: user[4],
+            mbti: user[5],
+          },
+        });
+      } else {
+        //값 저장 및 초기화
+        Send();
+        setCount((prev) => prev + 1);
+        //input 추가
+        setInputbox([...inputbox, addBox()]);
+        //사자
+        setLioncount((prev) => prev + 1);
+      }
+    } else {
+      alert("정보를 입력하세요!");
+    }
+  };
+  console.log(user);
+  console.log(lioncount + "lioncount 입니다.");
 
-
-
-    //클릭
-    const onClick = () => {
-        if(input.length >=1) {
-            if(count === 5) {
-                navigate('/test', {
-                    state: { name: user[0],
-                            nickname: user[1],
-                            major: user[2],
-                            contact: user[3],
-                            email: user[4],
-                            mbti: user[5]
-                    },
-                });
-            }
-            else {
-                //값 저장 및 초기화
-                Send();
-                setCount((prev) => prev + 1);
-                //input 추가
-                setInputbox([...inputbox, addBox()]);
-                //사자
-                setLioncount((prev) => prev + 1);
-            }
-        }
-        else {
-            alert("정보를 입력하세요!");
-        };  
-    };
-    console.log(user);
-    console.log(lioncount + "lioncount 입니다.")
-
-    return (
-        <>
-            <GlobalStyle />
-            <Container>
-                <TopContainer>
-                    <TopLion 
-                        lioncount = {lioncount} />
-                </TopContainer>
-                <Playground>
-                    <TopText> {top[count]} </TopText>
-                    <Box>
-                        <Box2>
-                            <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
-                            <Detail> {detail[count]} </Detail>
-                        </Box2>
-                        <InputInfo 
-                            onChange={onChange} 
-                            placeholder={inputclicked === true ? "" : initinput[count]}
-                            value={input}
-                            onFocus={() => {setInputClicked(true)}}
-                            onBlur={() => {setInputClicked(false)}}
-                            />
-                        <InputBox>
-                            {inputbox.map(elem => elem)}
-                        </InputBox>  
-                    </Box>
-                    <Btn
-                        type="button"
-                        onClick={onClick}
-                        color = {color}
-                    >다음 단계</Btn>
-                    <Undermsg />
-                    
-                </Playground>
-
-            </Container>
-
-        </>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <TopContainer>
+          <TopLion lioncount={lioncount} />
+        </TopContainer>
+        <Playground>
+          <TopText> {top[count]} </TopText>
+          <Box>
+            <Box2>
+              <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
+              <Detail> {detail[count]} </Detail>
+            </Box2>
+            <InputInfo
+              onChange={onChange}
+              placeholder={inputclicked === true ? "" : initinput[count]}
+              value={input}
+              onFocus={() => {
+                setInputClicked(true);
+              }}
+              onBlur={() => {
+                setInputClicked(false);
+              }}
+            />
+            <InputBox>{inputbox.map((elem) => elem)}</InputBox>
+          </Box>
+          <Btn type="button" onClick={onClick} color={color}>
+            다음 단계
+          </Btn>
+          <Undermsg />
+        </Playground>
+      </Container>
+    </>
+  );
 }
 
 export default Info;
