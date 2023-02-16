@@ -34,7 +34,7 @@ const HomePage = ({}) => {
           {/* 이 부분 새로 만드시는 게 편할 것 같아요 */}
         <JW>
             <div>아직도 명함 없는</div>
-            <div>한국외대생이 있다부?</div>
+            <div>한국외대생이 있다부..?</div>
           <div>{/* <img src=""></img> */}</div>
         </JW>
 
@@ -42,7 +42,7 @@ const HomePage = ({}) => {
           <div>너만의 명함을</div>
           <div>
 
-            <div>만들어봐재우!asdasasdasdsadd!</div>
+            <div>만들어봐재우!asdasasdasasdasdsaddsadd!</div>
             {/* <img></img> */}
           </div>
         </div>
