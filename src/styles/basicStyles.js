@@ -44,7 +44,6 @@ export const Btn = styled.button`
 `;
 
 export const Under = styled.div`
-  position: sticky;
   bottom: 0;
   width: 100%;
   padding: 1rem 0;
@@ -53,5 +52,5 @@ export const Under = styled.div`
   align-items: center;
   color: #505050;
   font-size: 12px;
-  background: #fffbee;
+  background: transparent;
 `;

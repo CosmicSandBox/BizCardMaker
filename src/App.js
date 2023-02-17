@@ -17,7 +17,7 @@ function App() {
           position: "relative",
           maxWidth: "31.25rem",
           width: "100vw",
-          height: "100vh",
+          height: "90vh",
           maxHeight: "100vh",
           overflow: "scroll",
 
