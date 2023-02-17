@@ -70,11 +70,11 @@ const Detail = styled.div`
 const Box = styled.div`
   margin: 0 auto;
   width: 95%;
-  height: 400px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 `;
 
 const Btn = styled.button`
@@ -86,8 +86,6 @@ const Btn = styled.button`
   color: white;
   font-size: 16px;
   font-family: 'yg-jalnan';
-  margin-bottom: 70px;
-
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
@@ -106,7 +104,6 @@ const InputBox = styled.div`
 
 const Box2 = styled.div`
   width: 85%;
-  height: 50px;
   padding: 5px;
   padding-top: 15px;
   padding-bottom: 0px;
