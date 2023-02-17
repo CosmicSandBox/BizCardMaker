@@ -37,16 +37,20 @@ const NameText = styled.div`
   color: #412917;
   margin-bottom: 165px;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: 'yg-jalnan';
 `;
 
 const NamePleaseBox = styled.div`
   color: #412917;
   font-size: 16px;
   text-align: left;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Detail = styled.div`
@@ -55,6 +59,8 @@ const Detail = styled.div`
   font-size: 12px;
   display: flex;
   align-items: center;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Form = styled.form`
@@ -76,6 +82,7 @@ const InputName = styled.input`
   margin-bottom: 219px;
   background-color: transparent;
   font-size: 1rem;
+  font-family: 'yg-jalnan';
   &:focus {
     outline: none;
   }

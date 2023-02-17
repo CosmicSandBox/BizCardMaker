@@ -38,11 +38,13 @@ const TopText = styled.div`
   color: #412917;
   margin-bottom: 57px;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
+
+  font-family: 'MaplestoryOTFBold';
 `;
 
 const InfoPleaseBox = styled.div`
@@ -50,6 +52,8 @@ const InfoPleaseBox = styled.div`
   font-size: 16px;
   text-align: left;
   background-color: transparent;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Detail = styled.div`
@@ -59,6 +63,8 @@ const Detail = styled.div`
   display: flex;
   align-items: center;
   background-color: transparent;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Box = styled.div`
@@ -79,6 +85,7 @@ const Btn = styled.button`
   border: none;
   color: white;
   font-size: 16px;
+  font-family: 'yg-jalnan';
   margin-bottom: 70px;
 `;
 
@@ -119,6 +126,9 @@ const InputInfo = styled.input`
   font-size: 1rem;
   border-bottom: solid 1px #94987e;
   padding-left: 8px;
+
+  font-family: 'MaplestoryOTFLight';
+
   &:focus {
     outline: none;
   }
@@ -208,7 +218,7 @@ function Info() {
       border: none;
       border-top: solid 0.3px #f7be7c;
       font-size: 1rem;
-
+      font-family: 'MaplestoryOTFLight';
       display: flex;
       justify-content: center;
       align-items: center;

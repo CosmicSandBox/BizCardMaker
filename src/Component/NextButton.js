@@ -12,6 +12,7 @@ const Btn = styled.button`
     border: none;
     color: white;
     font-size: 16px;
+    font-family: 'yg-jalnan';
 
     &:active {
         position: relative;

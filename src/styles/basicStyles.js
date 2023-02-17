@@ -34,6 +34,7 @@ export const Btn = styled.button`
   color: white;
   font-size: 16px;
   margin-bottom: 70px;
+  font-family: 'yg-jalnan';
 `;
 
 export const Under = styled.div`
