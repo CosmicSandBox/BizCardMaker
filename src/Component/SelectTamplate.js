@@ -39,17 +39,10 @@ const SelectTamplate = ({}) => {
   const navigate = useNavigate();
 
   const [side, setSide] = useState("front"); //'front', 'back'
-  const [selectedTemplate, setSelectedTemplate] = useState({
-    front: null,
-    back: null,
-  });
-
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
   const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
   const [selectedBackLogo, setSelectedBackLogo] = useState(1);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
-  const [finalBackUrl, sefFinalBackUrl] = useState(null);
-  // console.log("selectedBackLogo is", selectedBackLogo);
 
   const frontRef = useRef(null);
 
@@ -63,7 +56,6 @@ const SelectTamplate = ({}) => {
     return result;
   };
   const select = useCallback(async () => {
-    // console.log(document.querySelector(".basic-one"));
     let imgSrc;
     let className;
     if (side === "front") {
@@ -85,7 +77,6 @@ const SelectTamplate = ({}) => {
       await html2canvas(document.querySelector(className)).then((canvas) => {
         imgSrc = canvas.toDataURL("/a");
       });
-      // sefFinalBackUrl(imgSrc);s
 
       navigate("/result", {
         state: {
@@ -99,70 +90,89 @@ const SelectTamplate = ({}) => {
       });
     }
   }, [selectedFrontCard, side]);
-  // const select = async () => {
-  // };
 
   return (
     <>
-      <GlobalStyle />
-
       <Container>
         <TopContainer>
           <TopLion lioncount={side === "front" ? 6 : 7} />
         </TopContainer>
         <Playground>
-          <div style={{ height: "50vh" }}>
-            <Slide
-              photos={
-                side === "front"
-                  ? [
-                      <BasicCardOne ref={frontRef} />,
-                      <BasicCardTwo />,
-                      <BasicCardThree />,
-                    ]
-                  : renderBackCard()
-              }
-              pickEvent={(index) => {
-                if (side === "front") {
-                  setSelectedFrontCard(index);
-                } else {
-                  setSelectedBackLogo(index);
+          <div className={`content`}>
+            <div style={{ height: "50vh" }}>
+              <Slide
+                photos={
+                  side === "front"
+                    ? [
+                        <BasicCardOne ref={frontRef} />,
+                        <BasicCardTwo />,
+                        <BasicCardThree />,
+                      ]
+                    : renderBackCard()
                 }
-              }}
-              ref={frontRef}
-            ></Slide>
-          </div>{" "}
-          {side === "back" && (
-            <div>
-              <div>
-                <div>색상을 선택해주세요</div>
-                <div>(로고 주변 배경 색에 적용됩니다)</div>
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                {backSideColor.map((color) => {
-                  return (
-                    <div
-                      style={{
-                        width: "1.75rem",
-                        height: "1.75rem",
-                        borderRadius: "50%",
-                        background: color,
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        setSelectedBackColor(color);
-                      }}
-                    ></div>
-                  );
-                })}
-              </div>
+                pickEvent={(index) => {
+                  if (side === "front") {
+                    setSelectedFrontCard(index);
+                  } else {
+                    setSelectedBackLogo(index);
+                  }
+                }}
+                ref={frontRef}
+              ></Slide>
             </div>
-          )}
+            {side === "back" && (
+              <div className={`color`}>
+                <div>
+                  <div>색상을 선택해주세요</div>
+                  <div>(로고 주변 배경 색에 적용됩니다)</div>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                  {backSideColor.map((color) => {
+                    return (
+                      <div
+                        style={{
+                          width: "1.75rem",
+                          height: "1.75rem",
+                          borderRadius: "50%",
+                          background: color,
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          setSelectedBackColor(color);
+                        }}
+                      ></div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
           <Btn type="button" onClick={select} color={"#FF7A00"}>
             선택하기
           </Btn>
         </Playground>
       </Container>
+
+      <style jsx>{`
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          margin-bottom: 2rem;
+        }
+        .color {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .color div:first-child {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+      `}</style>
     </>
   );
 };

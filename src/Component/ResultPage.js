@@ -6,47 +6,60 @@ import BasicCardOne from "./business-card/BasicCardOne";
 import BasicCardTwo from "./business-card/BasicCardTwo";
 import BasicCardThree from "./business-card/BasicCardThree";
 import CardBackSide from "./business-card/CardBackSide";
+import styled from "styled-components";
+
+const ResultPageStyle = styled.section`
+  & {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+    padding: 2rem 0;
+
+    > div:first-child,
+    div.comment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    > div.comment {
+      gap: 0.5rem;
+      font-size: 1.375rem;
+    }
+  }
+`;
 
 const ResultPage = ({}) => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  console.log(state);
-  const getResult = () => {
-    const result = [];
-    if (state.frontCardIndex === 1) {
-      result.push(<BasicCardOne />);
-    } else if (state.frontCardIndex === 2) {
-      result.push(<BasicCardTwo />);
-    } else {
-      result.push(<BasicCardThree />);
-    }
-    result.push(
-      <CardBackSide
-        bgColor={state.backColor}
-        icon={`logo0${state.backLogoIndex}.png`}
-      ></CardBackSide>
-    );
-    return result;
-  };
-  console.log(state.frontImgUrl);
   return (
-    <section>
-      <div>{state.userInfo.name}님, 당신의 명함은</div>
-      {getResult()}
-      <div>
-        <Three frontImgSrc={state.frontImgUrl} backImgSrc={state.backImgUrl} />
-        <div>손가락으로 이리저리 돌려보세요</div>
+    <>
+      <ResultPageStyle>
+        <div>
+          <div>{state.userInfo.name}님, 당신의 명함은</div>
+          <Three
+            frontImgSrc={state.frontImgUrl}
+            backImgSrc={state.backImgUrl}
+          />
+        </div>
 
         <Btn type="button" onClick={null} color={"#FF7A00"}>
           명함 다운받기
         </Btn>
-      </div>
 
-      <div>
-        다른 외대생들도 명함을<br></br> 만들 수 있게 도와줘!<br></br> 지금 바로
-        공유하기
-      </div>
-    </section>
+        <div className="comment">
+          <span>다른 외대생들도 명함을</span>
+          <span>만들 수 있게 도와줘!</span>
+          <span>지금 바로 공유하기</span>
+        </div>
+
+        <Btn type="button" onClick={null} color={"#FF7A00"}>
+          다른 명함 만들러 가기
+        </Btn>
+      </ResultPageStyle>
+    </>
   );
 };
 
