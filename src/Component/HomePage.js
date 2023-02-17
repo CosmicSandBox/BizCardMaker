@@ -101,6 +101,7 @@ const HomePage = () => {
           <Three
             frontImgSrc={"/biz_card_sample.svg"}
             backImgSrc={"/biz_card_back_sample.png"}
+            isHome={true}
           />
           <div>손가락으로 이리저리 돌려보세요!</div>
         </div>

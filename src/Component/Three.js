@@ -49,12 +49,13 @@ function Box({ position, imgSrc }) {
   );
 }
 
-export default function App({ frontImgSrc, backImgSrc }) {
+export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
   return (
     <>
+      {/* <img src={frontImgSrc}></img> */}
       <Canvas className={`canvas`} style={{ height: "50vh" }}>
         {/* //앞뒤 다 밝게 나옴 */}
-        <ambientLight intensity={25} />
+        <ambientLight intensity={isHome ? 20 : 1} />
 
         {/* //앞만 밝게 나옴 */}
         {/* <directionalLight position={[10, 5, 10]} /> */}

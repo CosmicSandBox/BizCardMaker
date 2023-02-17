@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import TopLion from "./TopLion";
 import Slide from "./Slide";
@@ -8,14 +9,34 @@ import {
   Playground,
   Btn,
 } from "../styles/basicStyles";
-import { useLocation } from "react-router";
 import BasicCardOne from "./business-card/BasicCardOne";
 import BasicCardTwo from "./business-card/BasicCardTwo";
 import BasicCardThree from "./business-card/BasicCardThree";
 import CardBackSide from "./business-card/CardBackSide";
+import html2canvas from "html2canvas";
 
+const backSideColor = [
+  "#F51212",
+  "#FF7A00",
+  "#FFE600",
+  "#06C755",
+  "#1877F2",
+  "#142745",
+  "#7000FF",
+];
+const backLogo = [
+  "logo01.png",
+  "logo02.png",
+  "logo03.png",
+  "logo04.png",
+  "logo05.png",
+  "logo06.png",
+  "logo07.png",
+  "logo08.png",
+];
 const SelectTamplate = ({}) => {
-  const { userInfo } = useLocation();
+  const { state } = useLocation();
+  const navigate = useNavigate();
 
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedTemplate, setSelectedTemplate] = useState({
@@ -26,27 +47,12 @@ const SelectTamplate = ({}) => {
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
   const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
   const [selectedBackLogo, setSelectedBackLogo] = useState(1);
-  console.log("selectedBackLogo is", selectedBackLogo);
+  const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
+  const [finalBackUrl, sefFinalBackUrl] = useState(null);
+  // console.log("selectedBackLogo is", selectedBackLogo);
 
-  const backSideColor = [
-    "#F51212",
-    "#FF7A00",
-    "#FFE600",
-    "#06C755",
-    "#1877F2",
-    "#142745",
-    "#7000FF",
-  ];
-  const backLogo = [
-    "logo01.png",
-    "logo02.png",
-    "logo03.png",
-    "logo04.png",
-    "logo05.png",
-    "logo06.png",
-    "logo07.png",
-    "logo08.png",
-  ];
+  const frontRef = useRef(null);
+
   const renderBackCard = () => {
     const result = [];
     for (let i = 0; i < backLogo.length; i++) {
@@ -56,10 +62,45 @@ const SelectTamplate = ({}) => {
     }
     return result;
   };
+  const select = useCallback(async () => {
+    // console.log(document.querySelector(".basic-one"));
+    let imgSrc;
+    let className;
+    if (side === "front") {
+      if (selectedFrontCard === 1) {
+        className = ".basic-one";
+      } else if (selectedFrontCard === 2) {
+        className = ".basic-two";
+      } else {
+        className = ".basic-three";
+      }
+      await html2canvas(document.querySelector(className)).then((canvas) => {
+        imgSrc = canvas.toDataURL("/a");
+      });
 
-  const select = (templateIndex) => {
-    setSide("back");
-  };
+      sefFinalFrontUrl(imgSrc);
+      setSide("back");
+    } else {
+      className = ".card-back-side";
+      await html2canvas(document.querySelector(className)).then((canvas) => {
+        imgSrc = canvas.toDataURL("/a");
+      });
+      // sefFinalBackUrl(imgSrc);s
+
+      navigate("/result", {
+        state: {
+          userInfo: state,
+          frontCardIndex: selectedFrontCard,
+          backLogoIndex: selectedBackLogo,
+          backColor: selectedBackColor,
+          frontImgUrl: finalFrontUrl,
+          backImgUrl: imgSrc,
+        },
+      });
+    }
+  }, [selectedFrontCard, side]);
+  // const select = async () => {
+  // };
 
   return (
     <>
@@ -74,7 +115,11 @@ const SelectTamplate = ({}) => {
             <Slide
               photos={
                 side === "front"
-                  ? [<BasicCardOne />, <BasicCardTwo />, <BasicCardThree />]
+                  ? [
+                      <BasicCardOne ref={frontRef} />,
+                      <BasicCardTwo />,
+                      <BasicCardThree />,
+                    ]
                   : renderBackCard()
               }
               pickEvent={(index) => {
@@ -84,6 +129,7 @@ const SelectTamplate = ({}) => {
                   setSelectedBackLogo(index);
                 }
               }}
+              ref={frontRef}
             ></Slide>
           </div>{" "}
           {side === "back" && (
