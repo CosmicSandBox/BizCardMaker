@@ -1,21 +1,24 @@
 import React from "react";
-import BasicCard from "./BasicCard";
 
 const CardBackSide = ({ bgColor, icon }) => {
   return (
     <>
-      <BasicCard>
-        <div
-          style={{
-            background: bgColor,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img src={`/bizIcon/${icon}`}></img>
-        </div>
-      </BasicCard>
+      <div
+        className={`card-back-side`}
+        style={{
+          background: `${bgColor}`,
+          width: "21.875rem",
+          height: "12.75rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src={`/bizIcon/${icon}`}
+          style={{ width: "3rem", background: "transparent" }}
+        ></img>
+      </div>
     </>
   );
 };

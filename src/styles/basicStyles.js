@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 1%;
   width: 100%;
+  height: 1rem;
   margin: 0 auto;
-  padding-top: 44px;
+  padding: 2rem 0;
+  overflow: scroll;
 `;
 
 export const TopContainer = styled.div`
@@ -19,30 +24,32 @@ export const TopContainer = styled.div`
 
 export const Playground = styled.div`
   width: 90%;
-  height: 655px;
   margin: 0 auto;
-  padding-top: 30px;
   text-align: center;
 `;
 
 export const Btn = styled.button`
-  width: 87%;
+  width: ${(props) =>
+    props.size ? (props.size === "medium" ? "50%" : "80%") : "50%"};
   height: 65px;
   background: ${(props) => props.color};
   border-radius: 10px;
   border: none;
   color: white;
   font-size: 16px;
-  margin-bottom: 70px;
-  font-family: 'yg-jalnan';
+  font-family: "yg-jalnan";
+  cursor: "pointer";
 `;
 
 export const Under = styled.div`
+  position: sticky;
+  bottom: 0;
   width: 100%;
-  height: 15px;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #505050;
   font-size: 12px;
+  background: #fffbee;
 `;
