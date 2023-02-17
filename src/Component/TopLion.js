@@ -1,51 +1,68 @@
 import React from "react";
-import styled, {keyframes} from "styled-components"
-
-
-const Gray = styled.div`
-    width: 90%;
-    height: 8px;
-    background-color: lightgray;
-    position: relative;
+import styled, { keyframes } from "styled-components";
+const Bar = styled.div`
+  width: 90%;
+  height: 13px;
+  background-color: #96DB85;
+  margin: 0 auto;
+  position: absolute;
+  margin-top: 15px;
 `;
-
-function TopLion({lioncount}) {
-    console.log("toplion: " + lioncount)
-    //2rem = name start, 사자 처음값
-    const startpos = ['2rem', '2rem', '4.5rem', '7rem', '9.5rem', '12rem', '14.5rem', '17rem']
-    const endpos = ['2rem', '4.5rem', '7rem', '9.5rem', '12rem', '14.5rem', '17rem', '19.5rem']
-
-    const Move = keyframes`
+const Prograss = styled.img`
+  width: 90%;
+  height: 65%;
+  z-index: 2;
+  margin: 0 auto;
+  background-color: transparent;
+  
+`;
+function TopLion({ lioncount }) {
+  //2rem = name start, 사자 처음값
+  const startpos = [
+    "1rem",
+    "1rem",
+    "3.5rem",
+    "6rem",
+    "8.5rem",
+    "11rem",
+    "13.5rem",
+    "15.5rem",
+  ];
+  const endpos = [
+    "1rem",
+    "3.5rem",
+    "6rem",
+    "8.5rem",
+    "11rem",
+    "13.5rem",
+    "15.5rem",
+    "18rem",
+  ];
+  const Move = keyframes`
         0% {
-            top: 2rem;
             left: ${startpos[lioncount]};
         }
-        
         100% {
-            top: 2rem;
             left: ${endpos[lioncount]};
         }
     `;
-
-    const Img = styled.img`
-        width: 58px;
-        height: 64px;
-        position: absolute;
-        background-color: transparent;
-        top: 2rem;
-        left: ${endpos[lioncount]};
-        animation: ${Move} 2s 0s alternate 1;
-    `;
-
-    return (
-        <>
-            <Gray></Gray>
-
-
-                    <Img src="img/lion.png" />
-
-        </>
-    );
+  const Img = styled.img`
+    width: 58px;
+    height: 64px;
+    margin: 0 auto;
+    z-index: 3;
+    position: absolute;
+    background-color: transparent;
+    left: ${endpos[lioncount]};
+    animation: ${Move} 2s 0s alternate 1;
+    top: -0.2rem;
+  `;
+  return (
+    <>
+      <Bar></Bar>
+      <Prograss src="img/prograss.png" />
+      <Img src="img/lion.png" />
+    </>
+  );
 }
-
 export default React.memo(TopLion);

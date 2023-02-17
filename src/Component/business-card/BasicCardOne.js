@@ -39,11 +39,23 @@ const TextBox = styled.div`
   flex-direction: column;
 `;
 
+//위
+// const RTextBox = styled.div`
+//   width: 70%;
+//   height: 24%;
+//   background-color: transparent;
+//   display: flex;
+//   align-items: flex-end;
+//   flex-direction: column;
+// `;
+
+//중간
 const RTextBox = styled.div`
-  width: 70%;
-  height: 24%;
+  width: 65%;
+  height: 35%;
   background-color: transparent;
   display: flex;
+  justify-content: end;
   align-items: flex-end;
   flex-direction: column;
 `;
@@ -62,6 +74,7 @@ const Text = styled.div`
   font-size: 11px;
   background-color: transparent;
   margin-bottom: 6.3px;
+  color: #484340;
 `;
 
 const BasicCardOne = ({ children, pickedEvent }) => {

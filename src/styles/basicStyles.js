@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 100%;
 `;
 
 export const TopContainer = styled.div`
@@ -15,6 +14,7 @@ export const TopContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const Playground = styled.div`
@@ -34,6 +34,7 @@ export const Btn = styled.button`
   color: white;
   font-size: 16px;
   margin-bottom: 70px;
+  font-family: 'yg-jalnan';
 `;
 
 export const Under = styled.div`

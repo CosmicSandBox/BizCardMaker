@@ -9,7 +9,6 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding-top: 44px;
-  height: 100%;
 `;
 
 const TopContainer = styled.div`
@@ -20,10 +19,11 @@ const TopContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const Playground = styled.div`
-  width: 90%;
+  width: 83%;
   height: 655px;
   margin: 0 auto;
   padding-top: 49px;
@@ -37,16 +37,20 @@ const NameText = styled.div`
   color: #412917;
   margin-bottom: 165px;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: 'yg-jalnan';
 `;
 
 const NamePleaseBox = styled.div`
   color: #412917;
   font-size: 16px;
   text-align: left;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Detail = styled.div`
@@ -55,10 +59,12 @@ const Detail = styled.div`
   font-size: 12px;
   display: flex;
   align-items: center;
+
+  font-family: 'yg-jalnan';
 `;
 
 const Form = styled.form`
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -66,7 +72,7 @@ const Form = styled.form`
   padding-left: 26px;
 `;
 const InputName = styled.input`
-  width: 80%;
+  width: 90%;
   height: 40px;
   padding-left: 5px;
   border-width: 1px;
@@ -76,6 +82,7 @@ const InputName = styled.input`
   margin-bottom: 219px;
   background-color: transparent;
   font-size: 1rem;
+  font-family: 'yg-jalnan';
   &:focus {
     outline: none;
   }
@@ -116,7 +123,6 @@ function Name() {
             />
           </Form>
           <NextButton info={input} color={color} classN={"Name"} />
-          <Undermsg />
         </Playground>
       </Container>
     </>

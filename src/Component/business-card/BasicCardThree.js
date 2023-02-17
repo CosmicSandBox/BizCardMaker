@@ -52,6 +52,7 @@ const Text = styled.div`
   font-size: 10.3px;
   background-color: transparent;
   margin-bottom: 6.3px;
+  color: #484340;
 `;
 
 const BasicCardThree = ({ children, pickedEvent }) => {

@@ -12,7 +12,7 @@ const Btn = styled.button`
     border: none;
     color: white;
     font-size: 16px;
-    margin-bottom: 70px;
+    font-family: 'yg-jalnan';
 
     &:active {
         position: relative;
@@ -24,8 +24,6 @@ const Btn = styled.button`
 function NextButton({info, color, classN}) {
     const navigate = useNavigate();
 
-    console.log(color)
-    //체크랑 네브랑 같이 쓸 수 있는 방법은 없을까.
     const Check = () => {
         if(info.length >= 1) {
             window.location.replace('/info');
@@ -34,7 +32,6 @@ function NextButton({info, color, classN}) {
             alert("이름을 입력하세요.");
         };
     }
-    console.log(classN)
     const Nav = () => {
         if(info.length >= 1) {
             navigate('/Info', {
