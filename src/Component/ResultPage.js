@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Three from "./Three";
 import { Btn } from "../styles/basicStyles";
-import BasicCardOne from "./business-card/BasicCardOne";
-import BasicCardTwo from "./business-card/BasicCardTwo";
-import BasicCardThree from "./business-card/BasicCardThree";
-import CardBackSide from "./business-card/CardBackSide";
 import styled from "styled-components";
 
 const ResultPageStyle = styled.section`
   & {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1;
     gap: 2rem;
     padding: 2rem 0;
@@ -31,9 +28,20 @@ const ResultPageStyle = styled.section`
   }
 `;
 
-const ResultPage = ({}) => {
+const ResultPage = () => {
   const { state } = useLocation();
-  const navigate = useNavigate();
+  const downloadImg = () => {
+    const links = [state.frontImgUrl, state.backImgUrl];
+    for (let i = 0; i < links.length; i++) {
+      const link = document.createElement("a");
+      document.body.appendChild(link);
+      link.href = links[i];
+      link.download = `like-lion-business-card-${i}.png`;
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
     <>
       <ResultPageStyle>
@@ -45,7 +53,7 @@ const ResultPage = ({}) => {
           />
         </div>
 
-        <Btn type="button" onClick={null} color={"#FF7A00"}>
+        <Btn type="button" onClick={() => downloadImg()} color={"#FF7A00"}>
           명함 다운받기
         </Btn>
 
