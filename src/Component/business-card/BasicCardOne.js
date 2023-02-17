@@ -75,6 +75,7 @@ const Text = styled.div`
   background-color: transparent;
   margin-bottom: 6.3px;
   color: #484340;
+  font-family: 'Noto Sans KR', sans-serif;
 `;
 
 const BasicCardOne = ({ children }) => {
