@@ -18,9 +18,6 @@ function Router() {
         <Route path="/name" element={<Name />} />
         <Route path="/info" element={<Info />} />
         <Route path="/select-template" element={<SelectTamplate />} />
-        <Route path="/basic-card1" element={<BasicCardOne />} />
-        <Route path="/basic-card2" element={<BasicCardTwo />} />
-        <Route path="/basic-card3" element={<BasicCardThree />} />
         <Route path="/share" element={<Share />} />
         <Route path="/result" element={<ResultPage />} />
       </Routes>
