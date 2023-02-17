@@ -4,6 +4,7 @@ const CardBackSide = ({ bgColor, icon }) => {
   return (
     <>
       <div
+        className={`card-back-side`}
         style={{
           background: `${bgColor}`,
           width: "21.875rem",

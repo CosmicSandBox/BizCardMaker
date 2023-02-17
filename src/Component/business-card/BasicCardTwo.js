@@ -61,38 +61,39 @@ const BasicCardTwo = ({ children }) => {
 
   return (
     <>
-      <div>{children}</div>
-      <BizContainer style={{ backgroundImage: "url(/img/006.jpg)" }}>
-        <TopBox>
-          <TTextBox>
-            <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-              {userInfo.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: "0.9rem",
-                color: "lightgray",
-                paddingTop: "2.5%",
-              }}
-            >
-              &nbsp; {"<"} {userInfo.nickname} {">"}
-            </Text>
-          </TTextBox>
-        </TopBox>
+      <div className="basic-two">
+        <BizContainer style={{ backgroundImage: "url(/img/006.jpg)" }}>
+          <TopBox>
+            <TTextBox>
+              <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+                {userInfo.name}
+              </Text>
+              <Text
+                style={{
+                  fontSize: "0.9rem",
+                  color: "lightgray",
+                  paddingTop: "2.5%",
+                }}
+              >
+                &nbsp; {"<"} {userInfo.nickname} {">"}
+              </Text>
+            </TTextBox>
+          </TopBox>
 
-        <BottomBox>
-          <BTextBox>
-            <Text style={{ paddingLeft: "4.3px" }}>{userInfo.major}</Text>
-            <Text style={{ paddingLeft: "7px", marginBottom: "9.36px" }}>
-              {userInfo.email}
-            </Text>
-            <Text style={{ paddingLeft: "8px", marginBottom: "9.27px" }}>
-              {userInfo.contact}
-            </Text>
-            <Text>{userInfo.mbti}</Text>
-          </BTextBox>
-        </BottomBox>
-      </BizContainer>
+          <BottomBox>
+            <BTextBox>
+              <Text style={{ paddingLeft: "4.3px" }}>{userInfo.major}</Text>
+              <Text style={{ paddingLeft: "7px", marginBottom: "9.36px" }}>
+                {userInfo.email}
+              </Text>
+              <Text style={{ paddingLeft: "8px", marginBottom: "9.27px" }}>
+                {userInfo.contact}
+              </Text>
+              <Text>{userInfo.mbti}</Text>
+            </BTextBox>
+          </BottomBox>
+        </BizContainer>
+      </div>
     </>
   );
 };
