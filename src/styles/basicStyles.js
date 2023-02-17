@@ -29,16 +29,18 @@ export const Playground = styled.div`
 `;
 
 export const Btn = styled.button`
-  width: ${(props) =>
-    props.size ? (props.size === "medium" ? "50%" : "80%") : "50%"};
+  /* width: ${(props) =>
+    props.size ? (props.size === "medium" ? "50%" : "80%") : "50%"}; */
+    width: 80%;
   height: 65px;
   background: ${(props) => props.color};
-  border-radius: 10px;
+  border-radius: 50px;
   border: none;
   color: white;
   font-size: 16px;
   font-family: "yg-jalnan";
   cursor: "pointer";
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Under = styled.div`

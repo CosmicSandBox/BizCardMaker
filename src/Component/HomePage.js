@@ -2,14 +2,14 @@ import React, { useState, useMemo } from "react";
 import Three from "./Three";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Btn } from "../styles/basicStyles";
+import { Container, Btn } from "../styles/basicStyles";
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  padding-top: 40px;
 `;
 
 const Intro = styled.div`
@@ -19,9 +19,18 @@ const Intro = styled.div`
   align-items: center;
   flex-wrap: nowrap;
   color: #412917;
-  font-family: 'Pretendard-Regular';
+  position: relative;
+  margin-bottom: 20px;
 `;
 
+const TopText = styled.div`
+  font-family: 'ONE-Mobile-POP';
+  font-size: 25px;
+  white-space: pre-wrap;
+  line-height: 120%;
+  color: black;
+
+`;
 const StyledInput = styled.input`
   appearance: none;
   border: 1.5px solid gainsboro;
@@ -40,15 +49,16 @@ const StyledInput = styled.input`
 const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
-  align-items: center;
   user-select: none;
   gap: 0.3rem;
+  margin-top: 12px;
+  margin-bottom: 20px;
 `;
 
 const StyledP = styled.p`
   margin-left: 0.25rem;
 
-  font-family: "Pretendard-Regular";
+  font-family: "PretendardWindRegular";
 `;
 
 const HomePage = () => {
@@ -66,52 +76,64 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Section>
-        <Intro>
-          <div>
-            <img src="img/nocardyet.png" />
-          </div>
-          <div>
-            <img src="img/makeyours.png" />
-          </div>
-        </Intro>
+      <Container>
+        <Section>
+          <Intro>
+            <TopText style={{marginBottom: "25px", textAlign: "center"}}>
+              아직도 명함 없는<br/>
+              <span style={{color: "#D94925"}}>한국외대생</span>
+              이 있다부?
+            </TopText>
 
-        <Three
-          frontImgSrc={"/biz_card_sample.svg"}
-          backImgSrc={"/biz_card_back_sample.png"}
-          isHome={true}
-        />
+            <TopText style={{fontSize: "6vh"}}>
+              너만의&nbsp;
+              <span style={{color: "#D94925"}}>명함</span>
+              을<br/> 만들어봐!&nbsp;
+                <img src="img/BizcardIcon.png" 
+                        style={{width: "7vh", 
+                                position: "absolute", paddingTop: "1.1vh"}}/>
+            </TopText>
 
-        <StyledLabel htmlFor={"fefe"}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <StyledInput
-              type="checkbox"
-              onClick={async () => {
-                await colorOnclick;
-                setState((current) => !current);
-              }}
-            />
-            <StyledP>개인정보 활용동의</StyledP>
-          </div>
-          <p style={{ fontSize: "13px", color: "gray" }}>
-            (개인정보는 명함을 제작할 때만 쓰이며 이후 다 파기됩니다.)
-          </p>
-        </StyledLabel>
 
-        <Btn
-          color={color}
-          onClick={() => {
-            if (state === true) {
-              navigate("/name");
-            } else {
-              return;
-            }
-          }}
-          size={"medium"}
-        >
-          시작!
-        </Btn>
-      </Section>
+          </Intro>
+
+          <Three
+            frontImgSrc={"/biz_card_sample.svg"}
+            backImgSrc={"/biz_card_back_sample.png"}
+            isHome={true}
+          />
+
+          <StyledLabel htmlFor={"fefe"}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <StyledInput
+                type="checkbox"
+                onClick={async () => {
+                  await colorOnclick;
+                  setState((current) => !current);
+                }}
+              />
+              <StyledP>개인정보 활용동의</StyledP>
+            </div>
+            <p style={{ fontSize: "12px", color: "gray", paddingLeft: "2.2rem"}}>
+              개인정보는 명함 제작에만 사용되며 이후 전부 파기됩니다.
+            </p>
+          </StyledLabel>
+
+          <Btn
+            color={color}
+            onClick={() => {
+              if (state === true) {
+                navigate("/name");
+              } else {
+                return;
+              }
+            }}
+            size={"medium"}
+          >
+            시작!
+          </Btn>
+        </Section>
+      </Container>
     </>
   );
 };
