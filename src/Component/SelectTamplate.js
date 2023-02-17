@@ -14,7 +14,6 @@ import BasicCardTwo from "./business-card/BasicCardTwo";
 import BasicCardThree from "./business-card/BasicCardThree";
 import CardBackSide from "./business-card/CardBackSide";
 
-
 const SelectTamplate = ({}) => {
   const { userInfo } = useLocation();
 
@@ -24,10 +23,10 @@ const SelectTamplate = ({}) => {
     back: null,
   });
 
-  const [selectedFrontCard, setSelectedFrontCard] = useState(null);
+  const [selectedFrontCard, setSelectedFrontCard] = useState(1);
   const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
-  const [selectedBackLogo, setSelectedBackLogo] = useState(null);
-  // console.log(selectedBackLogo);
+  const [selectedBackLogo, setSelectedBackLogo] = useState(1);
+  console.log("selectedBackLogo is", selectedBackLogo);
 
   const backSideColor = [
     "#F51212",
@@ -52,13 +51,7 @@ const SelectTamplate = ({}) => {
     const result = [];
     for (let i = 0; i < backLogo.length; i++) {
       result.push(
-        <CardBackSide
-          bgColor={selectedBackColor}
-          icon={backLogo[i]}
-          pickedEvent={(e) => {
-            setSelectedBackLogo(e);
-          }}
-        />
+        <CardBackSide bgColor={selectedBackColor} icon={backLogo[i]} />
       );
     }
     return result;
@@ -81,27 +74,15 @@ const SelectTamplate = ({}) => {
             <Slide
               photos={
                 side === "front"
-                  ? [
-                      <BasicCardOne
-                        pickedEvent={(e) => {
-                          setSelectedFrontCard(e);
-                        }}
-                      />,
-                      <BasicCardTwo
-                        pickedEvent={(e) => {
-                          setSelectedFrontCard(e);
-                        }}
-                      />,
-                      <BasicCardThree
-                        pickedEvent={(e) => {
-                          setSelectedFrontCard(e);
-                        }}
-                      />,
-                    ]
+                  ? [<BasicCardOne />, <BasicCardTwo />, <BasicCardThree />]
                   : renderBackCard()
               }
               pickEvent={(index) => {
-                setSelectedTemplate({ ...selectedTemplate, side: index });
+                if (side === "front") {
+                  setSelectedFrontCard(index);
+                } else {
+                  setSelectedBackLogo(index);
+                }
               }}
             ></Slide>
           </div>{" "}
@@ -132,7 +113,7 @@ const SelectTamplate = ({}) => {
             </div>
           )}
           <Btn type="button" onClick={select} color={"#FF7A00"}>
-            다음 단계
+            선택하기
           </Btn>
         </Playground>
       </Container>

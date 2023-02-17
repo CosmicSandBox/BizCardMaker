@@ -77,21 +77,14 @@ const Text = styled.div`
   color: #484340;
 `;
 
-const BasicCardOne = ({ children, pickedEvent }) => {
+const BasicCardOne = ({ children }) => {
   const location = useLocation();
-  // console.log("state", location.state);
-
   const [userInfo] = useState(location.state);
 
   return (
     <>
       <div>{children}</div>
-      <BizContainer
-        style={{ backgroundImage: "url(/img/004.jpg)" }}
-        onClick={() => {
-          pickedEvent(1);
-        }}
-      >
+      <BizContainer style={{ backgroundImage: "url(/img/004.jpg)" }}>
         <LeftBox>
           <TextBox>
             <Text style={{ paddingLeft: "4px" }}>{userInfo.major}</Text>

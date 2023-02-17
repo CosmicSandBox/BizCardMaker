@@ -55,21 +55,14 @@ const Text = styled.div`
   color: #484340;
 `;
 
-const BasicCardThree = ({ children, pickedEvent }) => {
+const BasicCardThree = ({ children }) => {
   const location = useLocation();
-  // console.log("state", location.state);
-
   const [userInfo] = useState(location.state);
 
   return (
     <>
       <div>{children}</div>
-      <BizContainer
-        style={{ backgroundImage: "url(/img/008.jpg)" }}
-        onClick={() => {
-          pickedEvent(3);
-        }}
-      >
+      <BizContainer style={{ backgroundImage: "url(/img/008.jpg)" }}>
         <TopBox>
           <TTextBox>
             <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>

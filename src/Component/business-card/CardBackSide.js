@@ -1,10 +1,8 @@
 import React from "react";
-// import BasicCard from "./BasicCard";
 
-const CardBackSide = ({ bgColor, icon, pickedEvent }) => {
+const CardBackSide = ({ bgColor, icon }) => {
   return (
     <>
-      {/* <BasicCard>  */}
       <div
         style={{
           background: `${bgColor}`,
@@ -14,16 +12,12 @@ const CardBackSide = ({ bgColor, icon, pickedEvent }) => {
           justifyContent: "center",
           alignItems: "center",
         }}
-        onClick={() => {
-          pickedEvent(icon);
-        }}
       >
         <img
           src={`/bizIcon/${icon}`}
           style={{ width: "3rem", background: "transparent" }}
         ></img>
       </div>
-      {/* </BasicCard> */}
     </>
   );
 };

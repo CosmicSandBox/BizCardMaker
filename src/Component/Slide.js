@@ -4,14 +4,15 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 const Slide = ({ photos, pickEvent = null }) => {
-  // const [pickCard, setPickCard] = useState(false);
-
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    afterChange: (index) => {
+      pickEvent(index + 1);
+    },
   };
 
   return (
@@ -27,8 +28,6 @@ const Slide = ({ photos, pickEvent = null }) => {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    // console.log(index);
-                    // setPickCard(index);
                     pickEvent(index);
                   }}
                 >
