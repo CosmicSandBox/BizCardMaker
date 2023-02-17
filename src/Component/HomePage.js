@@ -2,15 +2,14 @@ import React, { useState, useMemo } from "react";
 import Three from "./Three";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Btn } from "../styles/basicStyles";
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: #fffbee;
-  height: 100vh;
+  gap: 1rem;
 `;
 
 const Intro = styled.div`
@@ -21,28 +20,6 @@ const Intro = styled.div`
   flex-wrap: nowrap;
   color: #412917;
   font-style: Noto Sans;
-`;
-const Btn = styled.button`
-  width: 133px;
-  height: 65px;
-  background: ${(props) => props.color};
-  border-radius: 10px;
-  border: none;
-  color: white;
-  font-size: 16px;
-  &:active {
-    position: relative;
-    transform: scale(0.95);
-  }
-`;
-
-const Bizcard = styled.div`
-  width: 50vh;
-  background-color: pink;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 const StyledInput = styled.input`
@@ -62,8 +39,10 @@ const StyledInput = styled.input`
 `;
 const StyledLabel = styled.label`
   display: flex;
+  flex-direction: column;
   align-items: center;
   user-select: none;
+  gap: 0.3rem;
 `;
 
 const StyledP = styled.p`
@@ -94,27 +73,28 @@ const HomePage = () => {
           <div>
             <img src="img/makeyours.png" />
           </div>
-          <div>손가락으로 이리저리 돌려보세요!</div>
         </Intro>
 
-        <div className={`biz-card`}>
-          <Three
-            frontImgSrc={"/biz_card_sample.svg"}
-            backImgSrc={"/biz_card_back_sample.png"}
-            isHome={true}
-          />
-          <div>손가락으로 이리저리 돌려보세요!</div>
-        </div>
+        <Three
+          frontImgSrc={"/biz_card_sample.svg"}
+          backImgSrc={"/biz_card_back_sample.png"}
+          isHome={true}
+        />
 
         <StyledLabel htmlFor={"fefe"}>
-          <StyledInput
-            type="checkbox"
-            onClick={async () => {
-              await colorOnclick;
-              setState((current) => !current);
-            }}
-          />
-          <StyledP>개인정보 활용동의</StyledP>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <StyledInput
+              type="checkbox"
+              onClick={async () => {
+                await colorOnclick;
+                setState((current) => !current);
+              }}
+            />
+            <StyledP>개인정보 활용동의</StyledP>
+          </div>
+          <p style={{ fontSize: "13px", color: "gray" }}>
+            (개인정보는 명함을 제작할 때만 쓰이며 이후 다 파기됩니다.)
+          </p>
         </StyledLabel>
 
         <Btn
@@ -126,6 +106,7 @@ const HomePage = () => {
               return;
             }
           }}
+          size={"medium"}
         >
           시작!
         </Btn>
