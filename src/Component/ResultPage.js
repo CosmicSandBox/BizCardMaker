@@ -33,6 +33,7 @@ const ResultPageStyle = styled.section`
 `;
 
 const ResultPage = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const downloadImg = () => {
     const links = [state.frontImgUrl, state.backImgUrl];
@@ -73,7 +74,7 @@ const ResultPage = () => {
         </div>
         <Share />
 
-        <Btn type="button" onClick={null} color={"#FF7A00"}>
+        <Btn type="button" onClick={()=>{navigate("/")}} color={"#FF7A00"}>
           다른 명함 만들러 가기
         </Btn>
       </ResultPageStyle>
