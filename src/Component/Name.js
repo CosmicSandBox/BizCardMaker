@@ -37,7 +37,7 @@ const NameText = styled.div`
   color: #412917;
   margin-bottom: 165px;
   border-radius: 0;
-  font-size: 22px;
+  font-size: 21px;
   display: flex;
   justify-content: center;
   align-items: center;

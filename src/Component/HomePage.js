@@ -19,7 +19,7 @@ const Intro = styled.div`
   align-items: center;
   flex-wrap: nowrap;
   color: #412917;
-  font-style: Noto Sans;
+  font-family: 'Pretendard-Regular';
 `;
 
 const StyledInput = styled.input`
@@ -47,6 +47,8 @@ const StyledLabel = styled.label`
 
 const StyledP = styled.p`
   margin-left: 0.25rem;
+
+  font-family: "Pretendard-Regular";
 `;
 
 const HomePage = () => {
@@ -65,7 +67,6 @@ const HomePage = () => {
   return (
     <>
       <Section>
-        {/* 이 부분 새로 만드시는 게 편할 것 같아요 */}
         <Intro>
           <div>
             <img src="img/nocardyet.png" />
