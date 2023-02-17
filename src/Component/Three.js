@@ -30,24 +30,12 @@ function Box({ position, imgSrc }) {
       position={position}
       ref={ref}
       scale={clicked ? 1.5 : 1}
+      rotateX={200}
       // onClick={(event) => click(!clicked)}
       // onPointerOver={(event) => hover(true)}
       // onPointerOut={(event) => hover(false)}
     >
-      //TODO 1번쨰
-      {/* <boxGeometry args={[2, 2, 2]} /> {[4, 2, 0.03]}
-     
-      <meshStandardMaterial
-        displacementScale={0.2}
-        // map={colorMap}
-        // displacementMap={displacementMap}
-        // normalMap={normalMap} //얘가 앞면 같고?
-        // // roughnessMap={roughnessMap}
-        // aoMap={aoMap} //얘가 뒷면 같고
-        color={"white"}
-      /> */}
       <boxGeometry args={[5, 3, 0.02]} />
-      {/* <meshStandardMaterial normalMap={normalMap} aoMap={aoMap} /> */}
       <meshStandardMaterial
         displacementScale={0.2}
         map={colorMap} // 칼라 포함해서 사진 그나마 제대로 나옴
@@ -57,46 +45,11 @@ function Box({ position, imgSrc }) {
         aoMap={aoMap} // 모임?
         // color={"white"}
       />
-      <Html
-        style={{
-          transition: "all 0.2s",
-          opacity: hidden ? 0 : 1,
-          transform: `scale(${hidden ? 0.5 : 1})`,
-        }}
-        distanceFactor={0.5}
-        position={[0, 0, 0.03]}
-        transform
-        occlude
-        // onOcclude={setVisible}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "150px",
-            background: "pink",
-            width: "240rem",
-            height: "140rem",
-            display: "flex",
-            backgroundColor: "black",
-          }}
-        >
-          <img
-            style={{
-              width: "40rem",
-              height: "40rem",
-            }}
-            src="/logo192.png"
-          ></img>
-          {/* Size hi */}
-        </div>
-      </Html>
     </mesh>
   );
 }
 
-export default function App({ imgSrc }) {
+export default function App({ frontImgSrc, backImgSrc }) {
   return (
     <>
       <Canvas className={`canvas`} style={{ height: "50vh" }}>
@@ -111,7 +64,8 @@ export default function App({ imgSrc }) {
 
         {/* //한쪽만만 밝게 나옴 */}
         {/* <pointLight position={[10, 10, 10]} /> */}
-        <Box imgSrc={imgSrc} />
+        <Box imgSrc={frontImgSrc} position={[0, 0, 0.01]} />
+        <Box imgSrc={backImgSrc} position={[0, 0, 0]} />
         {/* <Box position={[1.2, 0, 0]} /> */}
         <OrbitControls />
       </Canvas>

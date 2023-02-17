@@ -22,7 +22,10 @@ const HomePage = ({}) => {
         </div>
 
         <div className={`biz-card`}>
-          <Three imgSrc={"/biz_card_sample.svg"} />
+          <Three
+            frontImgSrc={"/biz_card_sample.svg"}
+            backImgSrc={"/biz_card_back_sample.png"}
+          />
           <div>손가락으로 이리저리 돌려보세요!</div>
         </div>
 
