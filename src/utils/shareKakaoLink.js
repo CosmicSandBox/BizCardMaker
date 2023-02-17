@@ -10,7 +10,7 @@ export const shareKakao = (route, title) => { // url이 id값에 따라 변경�
         content: {
           title: title, // 인자값으로 받은 title
           description: "명함 한 번 만들어보고 싶묘? 그럼 들어와보묘~🐰", // 인자값으로 받은 title
-          imageUrl: "http://localhost:3000/img/likelion_logo.png",
+          imageUrl: "https://biz-card-maker.vercel.app/img/likelion_logo.png",
           link: {
             mobileWebUrl: route, // 인자값으로 받은 route(uri 형태)
             webUrl: route
