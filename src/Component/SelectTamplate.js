@@ -16,13 +16,12 @@ import CardBackSide from "./business-card/CardBackSide";
 import html2canvas from "html2canvas";
 
 const backSideColor = [
-  "#F51212",
-  "#FF7A00",
-  "#FFE600",
-  "#06C755",
-  "#1877F2",
+  "#FFFFFF",
+  "#FF9933",
+  "#66ccff",
+  "#9966FF",
   "#142745",
-  "#7000FF",
+  "#000000",
 ];
 const backLogo = [
   "logo01.png",
