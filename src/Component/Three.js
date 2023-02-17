@@ -3,6 +3,15 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, useTexture, Html } from "@react-three/drei";
 import React, { Suspense } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
+import styled from "styled-components";
+
+const ThreePageStyle = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 
 const name = (type) => `PavingStones092_1K_${type}.jpg`;
 
@@ -52,24 +61,27 @@ function Box({ position, imgSrc }) {
 export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
   return (
     <>
-      {/* <img src={frontImgSrc}></img> */}
-      <Canvas className={`canvas`} style={{ height: "50vh" }}>
-        {/* //앞뒤 다 밝게 나옴 */}
-        <ambientLight intensity={isHome ? 20 : 1} />
+      <ThreePageStyle>
+        {/* <img src={frontImgSrc}></img> */}
+        <Canvas className={`canvas`} style={{ height: "40vh", width: "100%" }}>
+          {/* //앞뒤 다 밝게 나옴 */}
+          <ambientLight intensity={isHome ? 20 : 1} />
 
-        {/* //앞만 밝게 나옴 */}
-        {/* <directionalLight position={[10, 5, 10]} /> */}
+          {/* //앞만 밝게 나옴 */}
+          {/* <directionalLight position={[10, 5, 10]} /> */}
 
-        {/* 가운데 위주로 밝게 뒤는 안나옴  */}
-        {/* <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} /> */}
+          {/* 가운데 위주로 밝게 뒤는 안나옴  */}
+          {/* <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} /> */}
 
-        {/* //한쪽만만 밝게 나옴 */}
-        {/* <pointLight position={[10, 10, 10]} /> */}
-        <Box imgSrc={frontImgSrc} position={[0, 0, 0.01]} />
-        <Box imgSrc={backImgSrc} position={[0, 0, 0]} />
-        {/* <Box position={[1.2, 0, 0]} /> */}
-        <OrbitControls />
-      </Canvas>
+          {/* //한쪽만만 밝게 나옴 */}
+          {/* <pointLight position={[10, 10, 10]} /> */}
+          <Box imgSrc={frontImgSrc} position={[0, 0, 0.01]} />
+          <Box imgSrc={backImgSrc} position={[0, 0, 0]} />
+          {/* <Box position={[1.2, 0, 0]} /> */}
+          <OrbitControls />
+        </Canvas>
+        <div>손가락으로 이리저리 돌려보세요!</div>
+      </ThreePageStyle>
     </>
   );
 }
