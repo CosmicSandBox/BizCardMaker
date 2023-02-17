@@ -69,7 +69,7 @@ const Detail = styled.div`
 
 const Box = styled.div`
   margin: 0 auto;
-  width: 90%;
+  width: 95%;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
@@ -81,12 +81,14 @@ const Btn = styled.button`
   width: 80%;
   height: 65px;
   background: ${(props) => props.color};
-  border-radius: 10px;
+  border-radius: 50px;
   border: none;
   color: white;
   font-size: 16px;
   font-family: 'yg-jalnan';
   margin-bottom: 70px;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 //박스 목록 관리
