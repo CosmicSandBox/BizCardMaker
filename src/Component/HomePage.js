@@ -20,7 +20,7 @@ const Intro = styled.div`
   align-items: center;
   flex-wrap: nowrap;
   color: #412917;
-  font-style: Noto Sans;
+  font-family: 'Pretendard-Regular';
 `;
 const Btn = styled.button`
   width: 133px;
@@ -30,6 +30,8 @@ const Btn = styled.button`
   border: none;
   color: white;
   font-size: 16px;
+  font-family: 'yg-jalnan';
+
   &:active {
     position: relative;
     transform: scale(0.95);
@@ -68,6 +70,8 @@ const StyledLabel = styled.label`
 
 const StyledP = styled.p`
   margin-left: 0.25rem;
+
+  font-family: "Pretendard-Regular";
 `;
 
 const HomePage = () => {
@@ -86,7 +90,6 @@ const HomePage = () => {
   return (
     <>
       <Section>
-        {/* 이 부분 새로 만드시는 게 편할 것 같아요 */}
         <Intro>
           <div>
             <img src="img/nocardyet.png" />
@@ -94,7 +97,7 @@ const HomePage = () => {
           <div>
             <img src="img/makeyours.png" />
           </div>
-          <div>손가락으로 이리저리 돌려보세요!</div>
+          <div style={{fontFamily: "Pretendard-Regular"}}>손가락으로 이리저리 돌려보세요!</div>
         </Intro>
 
         <Bizcard>

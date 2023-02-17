@@ -38,13 +38,13 @@ const TopText = styled.div`
   color: #412917;
   margin-bottom: 57px;
   border-radius: 0;
-  font-size: 22px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
 
-  font-family: 'MaplestoryOTFBold';
+  font-family: 'yg-jalnan';
 `;
 
 const InfoPleaseBox = styled.div`
@@ -78,7 +78,7 @@ const Box = styled.div`
 `;
 
 const Btn = styled.button`
-  width: 87%;
+  width: 80%;
   height: 65px;
   background: ${(props) => props.color};
   border-radius: 10px;
@@ -127,7 +127,7 @@ const InputInfo = styled.input`
   border-bottom: solid 1px #94987e;
   padding-left: 8px;
 
-  font-family: 'MaplestoryOTFLight';
+  font-family: 'yg-jalnan';
 
   &:focus {
     outline: none;
@@ -194,9 +194,9 @@ function Info() {
     "",
     "선택사항",
     "(예: 멋쟁이사자학과)",
-    "전화번호 혹은 SNS 아이디를 입력해주세요",
-    "학교 이메일을 입력해주세요 (예: likelion@hufs.ac.kr)",
-    "알파벳 4글자를 입력해주세요 (예:ENTP)",
+    "전화번호 or SNS 아이디",
+    "학교 이메일을 입력하세요",
+    "알파벳 4글자",
   ];
 
   //input initmsg
@@ -204,7 +204,7 @@ function Info() {
     "",
     "아기 사자",
     "정글탐험학과",
-    "010-xxxx-xxxx / like****2023",
+    "010-xxxx-xxxx  /  hufsglobal_likelion",
     "likelion@hufs.ac.kr",
     "CUTE",
   ];
@@ -218,7 +218,7 @@ function Info() {
       border: none;
       border-top: solid 0.3px #f7be7c;
       font-size: 1rem;
-      font-family: 'MaplestoryOTFLight';
+      font-family: 'yg-jalnan';
       display: flex;
       justify-content: center;
       align-items: center;
