@@ -40,6 +40,12 @@ function Share() {
             alert("공유하기가 지원되지 않는 환경 입니다.")
         }
       }
+
+
+      //url
+      const onClick = () => {
+        alert("복사 완료!")
+      }
       
 
 
@@ -53,16 +59,16 @@ function Share() {
                         <Img src="img/kakaotalk_logo.png" />
                 </BTN>
                 {/* 페이스북 */}
-                <FacebookShareButton url="/name">
+                <FacebookShareButton url="http://localhost:3000/">
                     <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
                 </FacebookShareButton>
                 {/* 트위터 */}
-                <TwitterShareButton url="/name">
+                <TwitterShareButton url="http://localhost:3000/">
                     <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
                 </TwitterShareButton>
                 {/* url 복사 */}
                 <CopyToClipboard text={"http://localhost:3000/"}>
-                        <BTN>
+                        <BTN onClick={onClick}>
                             <URL>URL</URL>
                         </BTN>
                 </CopyToClipboard>
@@ -105,7 +111,7 @@ const URL = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 1.1rem;
-    color: ivory
+    color: ivory;
 `;
 
 export default Share;

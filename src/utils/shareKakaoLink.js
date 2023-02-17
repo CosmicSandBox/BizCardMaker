@@ -6,11 +6,11 @@ export const shareKakao = (route, title) => { // url이 id값에 따라 변경�
       }
   
       kakao.Link.sendDefault({
-        objectType: "feed", // 카카오 링크 공유 여러 type들 중 feed라는 타입 -> 자세한 건 카카오에서 확인
+        objectType: "feed", // 카카오 링크 공유 여러 type들 중 feed라는 타입
         content: {
           title: title, // 인자값으로 받은 title
           description: "명함 한 번 만들어보고 싶묘? 그럼 들어와보묘~🐰", // 인자값으로 받은 title
-          imageUrl: "이미지 url",
+          imageUrl: "http://localhost:3000/img/likelion_logo.png",
           link: {
             mobileWebUrl: route, // 인자값으로 받은 route(uri 형태)
             webUrl: route
