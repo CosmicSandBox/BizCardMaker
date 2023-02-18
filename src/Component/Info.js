@@ -70,11 +70,11 @@ const Detail = styled.div`
 const Box = styled.div`
   margin: 0 auto;
   width: 95%;
-  height: 400px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 `;
 
 const Btn = styled.button`
@@ -86,8 +86,6 @@ const Btn = styled.button`
   color: white;
   font-size: 16px;
   font-family: 'yg-jalnan';
-  margin-bottom: 70px;
-
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
@@ -106,7 +104,6 @@ const InputBox = styled.div`
 
 const Box2 = styled.div`
   width: 85%;
-  height: 50px;
   padding: 5px;
   padding-top: 15px;
   padding-bottom: 0px;
@@ -175,10 +172,10 @@ function Info() {
   const top = [
     "",
     `반가워요 ${userInfo.name}님,\n재밌는 별명을 가지고 계신가요?`,
-    `${userInfo.name}님은 어떤 학과 소속이신가요?`,
-    `${userInfo.name}님의 연락처를 입력해주세요`,
+    `${userInfo.name}님은 \n어떤 학과 소속이신가요?`,
+    `${userInfo.name}님의 \n연락처를 입력해주세요`,
     "거의 다 왔어요!\n이메일을 입력해주세요",
-    "마지막으로 MBTI를 입력해주세요!",
+    "마지막으로 \nMBTI를 입력해주세요!",
   ];
 
   //plzmsg 바꾸기

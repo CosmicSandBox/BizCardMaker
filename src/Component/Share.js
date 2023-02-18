@@ -82,12 +82,11 @@ function Share() {
 const Container = styled.div`
     //부모 컴포넌트에 share 감싸는 box 지정해주셨으면 width 100%로 변경해서 사용하셔도 될 것 같습니다. 
     //제가 보기 편하려고 80% 한 거예용, height도 입맛에 맞게 바꾸세용
-    width: 80%;
-    height: 50%;
-    background-color: white;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 3rem;
 `;
 
 const Img = styled.img`

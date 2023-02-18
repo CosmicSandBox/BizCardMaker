@@ -35,7 +35,7 @@ const NameText = styled.div`
   height: 30px;
   text-align: center;
   color: #412917;
-  margin-bottom: 165px;
+  margin-bottom: 90px;
   border-radius: 0;
   font-size: 21px;
   display: flex;
@@ -79,7 +79,7 @@ const InputName = styled.input`
   border: none;
   border-bottom: solid 1px #94987e;
   margin-top: 5px;
-  margin-bottom: 219px;
+  margin-bottom: 100px;
   background-color: transparent;
   font-size: 1rem;
   font-family: 'yg-jalnan';
