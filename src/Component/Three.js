@@ -62,8 +62,9 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
   return (
     <>
       <ThreePageStyle>
-      <div style={{fontFamily: 'TmoneyRoundWindRegular'}}>
-          손가락으로 이리저리 돌려보세요!</div>
+        <div style={{ fontFamily: "TmoneyRoundWindRegular" }}>
+          손가락으로 이리저리 돌려보세요!
+        </div>
         {/* <img src={frontImgSrc}></img> */}
         <Canvas className={`canvas`} style={{ height: "40vh", width: "100%" }}>
           {/* //앞뒤 다 밝게 나옴 */}
