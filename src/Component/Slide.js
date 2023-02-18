@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -15,11 +15,20 @@ const Slide = ({ photos, pickEvent = null }) => {
     },
   };
 
+  const sliderRef = useRef();
+  const handleOnClick = (index) => {
+    sliderRef.current.slickGoTo(index);
+  };
+
+  useEffect(() => {
+    handleOnClick(0);
+  }, [photos]);
+
   return (
     <>
       <div className={`slide-body`}>
         <section className={`slide-section`}>
-          <Slider {...settings}>
+          <Slider {...settings} ref={sliderRef}>
             {photos.map((photo, index) => {
               return (
                 <div
