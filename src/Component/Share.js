@@ -97,7 +97,6 @@ const Container = styled.div`
   //제가 보기 편하려고 80% 한 거예용, height도 입맛에 맞게 바꾸세용
   width: 80%;
   height: 50%;
-  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
