@@ -6,11 +6,18 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import styled from "styled-components";
 
 const ThreePageStyle = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  & {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    > .comment {
+      color: gray;
+      font-size: 0.7rem;
+    }
+  }
 `;
 
 const name = (type) => `PavingStones092_1K_${type}.jpg`;
@@ -62,9 +69,6 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
   return (
     <>
       <ThreePageStyle>
-        <div style={{ fontFamily: "TmoneyRoundWindRegular" }}>
-          손가락으로 이리저리 돌려보세요!
-        </div>
         {/* <img src={frontImgSrc}></img> */}
         <Canvas className={`canvas`} style={{ height: "40vh", width: "100%" }}>
           {/* //앞뒤 다 밝게 나옴 */}
@@ -83,6 +87,12 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
           {/* <Box position={[1.2, 0, 0]} /> */}
           <OrbitControls />
         </Canvas>
+        <div
+          className={`comment`}
+          style={{ fontFamily: "TmoneyRoundWindRegular" }}
+        >
+          손가락으로 이리저리 돌려보세요!
+        </div>
       </ThreePageStyle>
     </>
   );
