@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import GlobalStyle from "./GlobalStyle";
+import styled from "styled-components";
 import TopLion from "./TopLion";
 import Slide from "./Slide";
 import {
@@ -33,13 +33,30 @@ const backLogo = [
   "logo07.png",
   "logo08.png",
 ];
+
+const TopText = styled.div`
+  width: 100%;
+  height: 68px;
+  text-align: center;
+  line-height: 160%;
+  color: #412917;
+  border-radius: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-line;
+
+  font-family: "yg-jalnan";
+`;
+
 const SelectTamplate = ({}) => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
-  const [selectedBackColor, setSelectedBackColor] = useState("#FFFFFF");
+  const [selectedBackColor, setSelectedBackColor] = useState("#000000");
   const [selectedBackLogo, setSelectedBackLogo] = useState(0);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
 
@@ -81,7 +98,7 @@ const SelectTamplate = ({}) => {
         state: {
           userInfo: state,
           frontCardIndex: selectedFrontCard,
-          backLogoIndex: selectedBackLogo,
+          backLogoIndex: selectedBackLogo - 1,
           backColor: selectedBackColor,
           frontImgUrl: finalFrontUrl,
           backImgUrl: imgSrc,
@@ -96,6 +113,18 @@ const SelectTamplate = ({}) => {
         <TopContainer>
           <TopLion lioncount={side === "front" ? 6 : 7} />
         </TopContainer>
+
+        {side === "front" ? (
+          <TopText>
+            이제 가장 마음에 드는<br></br> 명함 디자인을 골라주세요
+          </TopText>
+        ) : (
+          <TopText>
+            명함 뒷 면에 쓰일 마음에 드는 <br></br>
+            로고와 색을 선택해주세요
+          </TopText>
+        )}
+
         <Playground>
           <div className={`content`}>
             <div style={{ height: "50vh" }}>
