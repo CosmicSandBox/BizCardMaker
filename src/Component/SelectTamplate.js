@@ -58,7 +58,7 @@ const SelectTamplate = ({}) => {
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
   const [selectedBackColor, setSelectedBackColor] = useState("#000000");
-  const [selectedBackLogo, setSelectedBackLogo] = useState(0);
+  const [selectedBackLogo, setSelectedBackLogo] = useState(1);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
 
   const frontRef = useRef(null);
@@ -87,17 +87,21 @@ const SelectTamplate = ({}) => {
       } else {
         className = ".basic-three";
       }
-      await html2canvas(document.querySelector(className)).then((canvas) => {
-        imgSrc = canvas.toDataURL("/a");
-      });
+      await html2canvas(document.querySelector(className), { scale: 10 }).then(
+        (canvas) => {
+          imgSrc = canvas.toDataURL("/a");
+        }
+      );
 
       sefFinalFrontUrl(imgSrc);
       setSide("back");
     } else {
       className = `.card-back-side-${selectedBackLogo - 1}`;
-      await html2canvas(document.querySelector(className)).then((canvas) => {
-        imgSrc = canvas.toDataURL("/a");
-      });
+      await html2canvas(document.querySelector(className), { scale: 10 }).then(
+        (canvas) => {
+          imgSrc = canvas.toDataURL("/a");
+        }
+      );
 
       navigate("/result", {
         state: {
@@ -150,7 +154,7 @@ const SelectTamplate = ({}) => {
                     setSelectedBackLogo(index);
                   }
                 }}
-                ref={frontRef}
+                side={side}
               ></Slide>
             </div>
             {side === "back" && (

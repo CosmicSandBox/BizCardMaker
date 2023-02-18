@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const Slide = ({ photos, pickEvent = null }) => {
+const Slide = ({ photos, pickEvent = null, side }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -22,7 +22,7 @@ const Slide = ({ photos, pickEvent = null }) => {
 
   useEffect(() => {
     handleOnClick(0);
-  }, [photos]);
+  }, [side]);
 
   return (
     <>
