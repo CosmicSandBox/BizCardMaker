@@ -39,8 +39,8 @@ const SelectTamplate = ({}) => {
 
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
-  const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
-  const [selectedBackLogo, setSelectedBackLogo] = useState(1);
+  const [selectedBackColor, setSelectedBackColor] = useState("#FFFFFF");
+  const [selectedBackLogo, setSelectedBackLogo] = useState(0);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
 
   const frontRef = useRef(null);
