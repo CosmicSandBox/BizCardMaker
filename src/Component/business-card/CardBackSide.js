@@ -1,10 +1,10 @@
 import React from "react";
 
-const CardBackSide = ({ bgColor, icon }) => {
+const CardBackSide = ({ bgColor, icon, index }) => {
   return (
     <>
       <div
-        className={`card-back-side`}
+        className={`card-back-side-${index}`}
         style={{
           background: `${bgColor}`,
           width: "21.875rem",

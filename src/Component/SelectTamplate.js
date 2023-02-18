@@ -46,6 +46,7 @@ const TopText = styled.div`
   justify-content: center;
   align-items: center;
   white-space: pre-line;
+  margin-top: 2rem;
 
   font-family: "yg-jalnan";
 `;
@@ -66,7 +67,11 @@ const SelectTamplate = ({}) => {
     const result = [];
     for (let i = 0; i < backLogo.length; i++) {
       result.push(
-        <CardBackSide bgColor={selectedBackColor} icon={backLogo[i]} />
+        <CardBackSide
+          bgColor={selectedBackColor}
+          icon={backLogo[i]}
+          index={i}
+        />
       );
     }
     return result;
@@ -89,7 +94,7 @@ const SelectTamplate = ({}) => {
       sefFinalFrontUrl(imgSrc);
       setSide("back");
     } else {
-      className = ".card-back-side";
+      className = `.card-back-side-${selectedBackLogo - 1}`;
       await html2canvas(document.querySelector(className)).then((canvas) => {
         imgSrc = canvas.toDataURL("/a");
       });
@@ -105,7 +110,7 @@ const SelectTamplate = ({}) => {
         },
       });
     }
-  }, [selectedFrontCard, side]);
+  }, [selectedFrontCard, side, selectedBackLogo]);
 
   return (
     <>
