@@ -38,7 +38,7 @@ function Box({ position, imgSrc }) {
       // {...props}
       position={position}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
+      scale={clicked ? 1.5 : 1.3}
       rotateX={200}
       // onClick={(event) => click(!clicked)}
       // onPointerOver={(event) => hover(true)}
