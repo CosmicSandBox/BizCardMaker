@@ -48,7 +48,7 @@ const BasicCardTwo = ({}) => {
 
   return (
     <>
-      <div className="basic-two" style={{ width: " 100%" }}>
+      <div className="basic-three" style={{ width: " 100%" }}>
         <BizContainer>
           <div
             style={{
