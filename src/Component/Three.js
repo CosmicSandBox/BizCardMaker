@@ -23,7 +23,6 @@ const ThreePageStyle = styled.section`
 const name = (type) => `PavingStones092_1K_${type}.jpg`;
 
 function Box({ position, imgSrc }) {
-  const logoImg = "/logo192.png";
   const [colorMap, displacementMap, normalMap, roughnessMap, aoMap] = useLoader(
     TextureLoader,
     [imgSrc, imgSrc, imgSrc, imgSrc, imgSrc]
@@ -45,7 +44,7 @@ function Box({ position, imgSrc }) {
       // {...props}
       position={position}
       ref={ref}
-      scale={clicked ? 1.5 : 1.3}
+      scale={1.5}
       rotateX={200}
       // onClick={(event) => click(!clicked)}
       // onPointerOver={(event) => hover(true)}
@@ -59,6 +58,7 @@ function Box({ position, imgSrc }) {
         // normalMap={normalMap} //얘가 앞면 같고? 근데 색깔이 날아감 흑백같아짐
         // roughnessMap={roughnessMap} // 모임?
         aoMap={aoMap} // 모임?
+        opacity={0.5}
         // color={"white"}
       />
     </mesh>
@@ -72,16 +72,16 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
         {/* <img src={frontImgSrc}></img> */}
         <Canvas className={`canvas`} style={{ height: "40vh", width: "100%" }}>
           {/* //앞뒤 다 밝게 나옴 */}
-          <ambientLight intensity={isHome ? 20 : 1} />
+          <ambientLight intensity={isHome ? 20 : 0.5} />
 
           {/* //앞만 밝게 나옴 */}
           {/* <directionalLight position={[10, 5, 10]} /> */}
 
           {/* 가운데 위주로 밝게 뒤는 안나옴  */}
-          {/* <spotLight position={[15, 15, 15]} angle={0.15} penumbra={1} /> */}
+          {/* <spotLight position={[3, 3, 3]} angle={1} penumbra={0} /> */}
 
           {/* //한쪽만만 밝게 나옴 */}
-          {/* <pointLight position={[10, 10, 10]} /> */}
+          <pointLight position={[10, 10, 10]} />
           <Box imgSrc={frontImgSrc} position={[0, 0, 0.01]} />
           <Box imgSrc={backImgSrc} position={[0, 0, 0]} />
           {/* <Box position={[1.2, 0, 0]} /> */}
@@ -89,9 +89,11 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
         </Canvas>
         <div
           className={`comment`}
-          style={{ fontFamily: "TmoneyRoundWindRegular",
-          marginTop: "2px",
-          marginBottom: "10px"}}
+          style={{
+            fontFamily: "TmoneyRoundWindRegular",
+            marginTop: "2px",
+            marginBottom: "10px",
+          }}
         >
           손가락으로 이리저리 돌려보세요!
         </div>
