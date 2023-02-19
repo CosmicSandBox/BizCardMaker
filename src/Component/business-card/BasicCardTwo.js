@@ -85,7 +85,7 @@ const BasicCardTwo = ({ children }) => {
                 paddingLeft: "3%",
             }}>
                 <TTextBox>
-                  <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+                  <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
                     {userInfo.name}
                   </Text>
                   <Text

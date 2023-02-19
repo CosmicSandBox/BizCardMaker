@@ -37,49 +37,54 @@ const NameText = styled.div`
   color: #412917;
   margin-bottom: 90px;
   border-radius: 0;
-  font-size: 21px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   word-break: keep-all;
-  font-family: 'TmoneyRoundWindExtraBold';
+  font-family: 'ONE-Mobile-POP';
 `;
 
 const NamePleaseBox = styled.div`
+  width: 88%;
   color: #412917;
-  font-size: 16px;
+  font-size: 1.15rem;
   text-align: left;
-
+  margin: 0 auto;
+  margin-bottom: 3px;
   font-family: 'yg-jalnan';
 `;
 
 const Detail = styled.div`
   color: #7e593e;
-  height: 28px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
+  width: 88%;
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0 auto;
+  font-family: 'TmoneyRoundWindExtraBold';
+  margin-bottom: 5px;
 
 `;
 
 const InputName = styled.input`
-  width: 80.8%;
-  height: 40px;
-  padding-left: 5px;
+  width: 77%;
+  height: 38px;
+  padding: 12px 20px;
   border-width: 1px;
   border: none;
-  border-bottom: solid 1px #94987e;
+  outline: none;
   margin-top: 5px;
   margin-bottom: 100px;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 4px;
   font-size: 1rem;
   font-family: 'yg-jalnan';
-  text-align: center;
+  color: rgba(0,0,0,0.8);
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: #d3d3d3;
+    color: #A9A9A9;
   }
 `;
 
@@ -103,6 +108,12 @@ function Name() {
         </TopContainer>
         <Playground>
           <NameText>먼저 당신의 이름을 알려주세요</NameText>
+            <NamePleaseBox>
+              이름
+            </NamePleaseBox>
+            <Detail>
+              NAME
+            </Detail>
             <InputName
               onChange={onChange}
               placeholder={inputclicked === true ? "" : "김멋사"}

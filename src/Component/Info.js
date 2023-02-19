@@ -38,33 +38,33 @@ const TopText = styled.div`
   color: #412917;
   margin-bottom: 76px;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
   word-break: keep-all;
-  font-family: 'yg-jalnan';
+  font-family: 'ONE-Mobile-POP';
 `;
 
 const InfoPleaseBox = styled.div`
+  width: 79%;
   color: #412917;
-  font-size: 16px;
+  font-size: 1.15rem;
   text-align: left;
-  background-color: transparent;
-
+  margin: 0 auto;
+  margin-bottom: 3px;
   font-family: 'yg-jalnan';
 `;
 
 const Detail = styled.div`
   color: #7e593e;
-  height: 28px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-
-  font-family: 'yg-jalnan';
+  width: 79%;
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0 auto;
+  font-family: 'TmoneyRoundWindExtraBold';
+  margin-bottom: 5px;
 `;
 
 const Box = styled.div`
@@ -89,18 +89,18 @@ const Btn = styled.button`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
-//박스 목록 관리
+
+//박스 목록 관리 따로
 const InputBox = styled.div`
-  width: 80%;
+  width: 84%;
+  border-radius: 20px;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  background-color: #fee79f;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: transparent;
 `;
+
 
 const Box2 = styled.div`
   width: 85%;
@@ -118,21 +118,25 @@ const Box2 = styled.div`
 
 const InputInfo = styled.input`
   margin: 0 auto;
-  width: 79%;
+  width: 73%;
   height: 40px;
+  padding: 12px 20px;
   border-width: 1px;
-  background-color: transparent;
   border: none;
+  outline: none;
+  margin-top: 5px;
+  margin-bottom: 2rem;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 4px;
   font-size: 1rem;
-  border-bottom: solid 1px #94987e;
-  text-align: center;
   font-family: 'yg-jalnan';
+  color: rgba(0,0,0,0.8);
 
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: #d3d3d3;
+    color: #A9A9A9;
   }
 `;
 
@@ -181,21 +185,21 @@ function Info() {
   //plzmsg 바꾸기
   const plz = [
     "",
-    "닉네임을 입력해주세요",
-    "학과를 입력해주세요",
-    "연락처를 입력해주세요",
-    "이메일을 입력해주세요",
-    "MBTI를 입력해주세요",
+    "닉네임",
+    "학과",
+    "연락처",
+    "이메일",
+    "MBTI",
   ];
 
   //detailmsg 바꾸기
   const detail = [
     "",
-    "선택사항",
-    "(예: 멋쟁이사자학과)",
-    "전화번호 or SNS 아이디",
-    "학교 이메일을 입력하세요",
-    "알파벳 4글자",
+    "NICKNAME",
+    "MAJOR",
+    "CONTACT",
+    "E-MAIL",
+    "",
   ];
 
   //input initmsg
@@ -210,17 +214,20 @@ function Info() {
 
   //box 추가하기
   const addBox = () => {
-    const List = styled.div`
+
+      const List = styled.div`
       width: 100%;
-      background-color: transparent;
+      background-color: #FAF7F4;
       border: none;
-      border-top: solid 0.3px #f7be7c;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-family: 'yg-jalnan';
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 15px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      border-radius: 20px;
+      margin-bottom: 10px;
       &:focus {
         outline: none;
       }
@@ -283,6 +290,8 @@ function Info() {
                 </TopContainer>
                 <Playground>
                     <TopText> {top[count]} </TopText>
+                    <InfoPleaseBox>{plz[count]}</InfoPleaseBox>
+                    <Detail>{detail[count]}</Detail>
                     <Box>
                         <InputInfo 
                             onChange={onChange} 

@@ -41,14 +41,14 @@ const TopText = styled.div`
   line-height: 160%;
   color: #412917;
   border-radius: 0;
-  font-size: 20px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
   margin-top: 2rem;
   word-break: keep-all;
-  font-family: "yg-jalnan";
+  font-family: 'ONE-Mobile-POP';
 `;
 
 const SelectTamplate = ({}) => {
