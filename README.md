@@ -3,7 +3,8 @@
 <summary>사진</summary>
 <div>
 
-![likelion_logo](https://user-images.githubusercontent.com/78716896/219692563-2c10d68a-ffc8-4d87-9147-574a55b95430.png)
+
+![BizCardEX](https://user-images.githubusercontent.com/78716896/219945724-ef601aca-264e-43b1-a8e3-c3afb34deaec.jpg)
 
 
 </div>
