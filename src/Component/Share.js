@@ -59,7 +59,7 @@ function Share() {
           <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
         </TwitterShareButton>
         {/* url 복사 */}
-        <CopyToClipboard text={"http://localhost:3000/"}>
+        <CopyToClipboard text={"https://biz-card-maker.vercel.app/"}>
           <BTN onClick={onClick}>
             <URL>URL</URL>
           </BTN>
