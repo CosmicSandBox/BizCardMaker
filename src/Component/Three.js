@@ -89,7 +89,9 @@ export default function App({ frontImgSrc, backImgSrc, isHome = false }) {
         </Canvas>
         <div
           className={`comment`}
-          style={{ fontFamily: "TmoneyRoundWindRegular" }}
+          style={{ fontFamily: "TmoneyRoundWindRegular",
+          marginTop: "2px",
+          marginBottom: "10px"}}
         >
           손가락으로 이리저리 돌려보세요!
         </div>

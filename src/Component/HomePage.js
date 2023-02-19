@@ -129,6 +129,7 @@ const HomePage = () => {
               }
             }}
             size={"medium"}
+            style={{width: "65%"}}
           >
             시작!
           </Btn>
