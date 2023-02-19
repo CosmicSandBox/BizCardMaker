@@ -65,7 +65,7 @@ const ResultPage = () => {
           type="button"
           onClick={() => downloadImg()}
           color={"#FF7A00"}
-          style={{ width: "40%", marginBottom: "2rem", marginTop: "1.3rem" }}
+          style={{ width: "45%", marginBottom: "2rem", marginTop: "1.3rem" }}
           >
           명함 다운받기
         </Btn>
