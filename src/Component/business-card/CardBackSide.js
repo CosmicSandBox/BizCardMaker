@@ -7,7 +7,7 @@ const CardBackSide = ({ bgColor, icon, index }) => {
         className={`card-back-side-${index}`}
         style={{
           background: `${bgColor}`,
-          width: "21.875rem",
+          width: "100%",
           height: "12.75rem",
           display: "flex",
           justifyContent: "center",
