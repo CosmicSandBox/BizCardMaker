@@ -94,7 +94,7 @@ function Name() {
 
   const onChange = (e) => {
     setInput(e.target.value);
-    setColor(input.length <= 1 ? "#D3D3D3" : "#FF7A00");
+    setColor(input.length < 1 ? "#D3D3D3" : "#FF7A00");
   };
 
   //input focus, blur

@@ -241,7 +241,7 @@ function Info() {
 
     //클릭
     const onClick = () => {
-        if(input.length >=1) {
+        if(input.length > 0) {
             if(count === 5) {
               if(user.length === 5) {
                 navigate('/select-template', {
