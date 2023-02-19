@@ -42,7 +42,7 @@ const NameText = styled.div`
   justify-content: center;
   align-items: center;
   word-break: keep-all;
-  font-family: 'yg-jalnan';
+  font-family: 'TmoneyRoundWindExtraBold';
 `;
 
 const NamePleaseBox = styled.div`
@@ -60,7 +60,6 @@ const Detail = styled.div`
   display: flex;
   align-items: center;
 
-  font-family: 'yg-jalnan';
 `;
 
 const InputName = styled.input`
