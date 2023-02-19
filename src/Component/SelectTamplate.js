@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import GlobalStyle from "./GlobalStyle";
+import styled from "styled-components";
 import TopLion from "./TopLion";
 import Slide from "./Slide";
 import {
@@ -33,13 +33,31 @@ const backLogo = [
   "logo07.png",
   "logo08.png",
 ];
+
+const TopText = styled.div`
+  width: 100%;
+  height: 68px;
+  text-align: center;
+  line-height: 160%;
+  color: #412917;
+  border-radius: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-line;
+  margin-top: 2rem;
+
+  font-family: "yg-jalnan";
+`;
+
 const SelectTamplate = ({}) => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
-  const [selectedBackColor, setSelectedBackColor] = useState("#F51212");
+  const [selectedBackColor, setSelectedBackColor] = useState("#000000");
   const [selectedBackLogo, setSelectedBackLogo] = useState(1);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
 
@@ -49,7 +67,11 @@ const SelectTamplate = ({}) => {
     const result = [];
     for (let i = 0; i < backLogo.length; i++) {
       result.push(
-        <CardBackSide bgColor={selectedBackColor} icon={backLogo[i]} />
+        <CardBackSide
+          bgColor={selectedBackColor}
+          icon={backLogo[i]}
+          index={i}
+        />
       );
     }
     return result;
@@ -65,30 +87,34 @@ const SelectTamplate = ({}) => {
       } else {
         className = ".basic-three";
       }
-      await html2canvas(document.querySelector(className)).then((canvas) => {
-        imgSrc = canvas.toDataURL("/a");
-      });
+      await html2canvas(document.querySelector(className), { scale: 10 }).then(
+        (canvas) => {
+          imgSrc = canvas.toDataURL("/a");
+        }
+      );
 
       sefFinalFrontUrl(imgSrc);
       setSide("back");
     } else {
-      className = ".card-back-side";
-      await html2canvas(document.querySelector(className)).then((canvas) => {
-        imgSrc = canvas.toDataURL("/a");
-      });
+      className = `.card-back-side-${selectedBackLogo - 1}`;
+      await html2canvas(document.querySelector(className), { scale: 10 }).then(
+        (canvas) => {
+          imgSrc = canvas.toDataURL("/a");
+        }
+      );
 
       navigate("/result", {
         state: {
           userInfo: state,
           frontCardIndex: selectedFrontCard,
-          backLogoIndex: selectedBackLogo,
+          backLogoIndex: selectedBackLogo - 1,
           backColor: selectedBackColor,
           frontImgUrl: finalFrontUrl,
           backImgUrl: imgSrc,
         },
       });
     }
-  }, [selectedFrontCard, side]);
+  }, [selectedFrontCard, side, selectedBackLogo]);
 
   return (
     <>
@@ -96,6 +122,18 @@ const SelectTamplate = ({}) => {
         <TopContainer>
           <TopLion lioncount={side === "front" ? 6 : 7} />
         </TopContainer>
+
+        {side === "front" ? (
+          <TopText>
+            이제 가장 마음에 드는<br></br> 명함 디자인을 골라주세요
+          </TopText>
+        ) : (
+          <TopText>
+            명함 뒷 면에 쓰일 마음에 드는 <br></br>
+            로고와 색을 선택해주세요
+          </TopText>
+        )}
+
         <Playground>
           <div className={`content`}>
             <div style={{ height: "50vh" }}>
@@ -116,7 +154,7 @@ const SelectTamplate = ({}) => {
                     setSelectedBackLogo(index);
                   }
                 }}
-                ref={frontRef}
+                side={side}
               ></Slide>
             </div>
             {side === "back" && (

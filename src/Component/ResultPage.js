@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Three from "./Three";
 import { Btn } from "../styles/basicStyles";
 import styled from "styled-components";
-import Share from "./Share"
+import Share from "./Share";
 
 const ResultPageStyle = styled.section`
   & {
@@ -27,7 +27,7 @@ const ResultPageStyle = styled.section`
       font-size: 1.375rem;
       text-align: center;
       white-space: pre-wrap;
-      font-family: 'yg-jalnan';
+      font-family: "yg-jalnan";
     }
   }
 `;
@@ -51,30 +51,48 @@ const ResultPage = () => {
     <>
       <ResultPageStyle>
         <div>
-          <div style={{fontFamily: "yg-jalnan",
-          }}>{state.userInfo.name}님, 당신의 명함은</div>
+          <div style={{ fontFamily: "yg-jalnan", marginBottom: "1rem" }}>
+            {state.userInfo.name}님, 당신의 명함은
+          </div>
           <Three
             frontImgSrc={state.frontImgUrl}
             backImgSrc={state.backImgUrl}
           />
         </div>
 
-        <Btn type="button" onClick={() => downloadImg()} color={"#FF7A00"}
-              style={{width: "50%", marginBottom: "3rem"}}>
+        <Btn
+          type="button"
+          onClick={() => downloadImg()}
+          color={"#FF7A00"}
+          style={{ width: "50%", marginBottom: "3rem" }}
+        >
           명함 다운받기
         </Btn>
 
-        <div className="comment"
-              style={{fontSize: "1rem"}}>
-                다른 외대생들도 명함을<br/>만들 수 있게 도와줘!<br/>
+        <div
+          className="comment"
+          style={{ fontSize: "1rem", background: "transparent" }}
+        >
+          다른 외대생들도 명함을
+          <br />
+          만들 수 있게 도와줘!
+          <br />
         </div>
-        <div className="comment" 
-              style={{whiteSpace: "pre-wrap"}}>
-                지금 바로 공유하기
+        <div
+          className="comment"
+          style={{ whiteSpace: "pre-wrap", background: "transparent" }}
+        >
+          지금 바로 공유하기
         </div>
         <Share />
 
-        <Btn type="button" onClick={()=>{navigate("/")}} color={"#FF7A00"}>
+        <Btn
+          type="button"
+          onClick={() => {
+            navigate("/");
+          }}
+          color={"#FF7A00"}
+        >
           다른 명함 만들러 가기
         </Btn>
       </ResultPageStyle>
