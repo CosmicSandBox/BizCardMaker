@@ -150,7 +150,7 @@ const BasicCardOne = ({}) => {
                 <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
                   {userInfo.name}
                 </Text>
-                <Text style={{ fontSize: "0.76rem", color: "lightgray", textAlign: "right" }}>
+                <Text style={{ fontSize: "0.74rem", color: "lightgray", textAlign: "right" }}>
                   {userInfo.nickname}
                 </Text>
               </RTextBox>
