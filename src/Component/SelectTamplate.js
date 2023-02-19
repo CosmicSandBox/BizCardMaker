@@ -21,7 +21,7 @@ const backSideColor = [
   "#66ccff",
   "#9966FF",
   "#142745",
-  "#000000",
+  "#292929",
 ];
 const backLogo = [
   "logo01.png",
@@ -48,7 +48,7 @@ const TopText = styled.div`
   white-space: pre-line;
   margin-top: 2rem;
   word-break: keep-all;
-  font-family: 'ONE-Mobile-POP';
+  font-family: "ONE-Mobile-POP";
 `;
 
 const SelectTamplate = ({}) => {
@@ -57,7 +57,7 @@ const SelectTamplate = ({}) => {
 
   const [side, setSide] = useState("front"); //'front', 'back'
   const [selectedFrontCard, setSelectedFrontCard] = useState(1);
-  const [selectedBackColor, setSelectedBackColor] = useState("#000000");
+  const [selectedBackColor, setSelectedBackColor] = useState("#292929");
   const [selectedBackLogo, setSelectedBackLogo] = useState(1);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
 
