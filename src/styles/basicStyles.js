@@ -31,8 +31,8 @@ export const Playground = styled.div`
 export const Btn = styled.button`
   /* width: ${(props) =>
     props.size ? (props.size === "medium" ? "50%" : "80%") : "50%"}; */
-    width: 80%;
-  height: 65px;
+  width: 80%;
+  min-height: 65px;
   background: ${(props) => props.color};
   border-radius: 50px;
   border: none;
