@@ -4,6 +4,7 @@ import Three from "./Three";
 import { Btn } from "../styles/basicStyles";
 import styled from "styled-components";
 import Share from "./Share";
+import { m } from "framer-motion";
 
 const ResultPageStyle = styled.section`
   & {
@@ -12,23 +13,8 @@ const ResultPageStyle = styled.section`
     align-items: center;
     flex: 1;
     gap: 1rem;
-    padding: 2rem 0;
+    padding: 44px 0;
 
-    > div:first-child,
-    div.comment {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    > div.comment {
-      gap: 0.5rem;
-      font-size: 1.375rem;
-      text-align: center;
-      white-space: pre-wrap;
-      font-family: "yg-jalnan";
-    }
   }
 `;
 
@@ -50,51 +36,124 @@ const ResultPage = () => {
   return (
     <>
       <ResultPageStyle>
+        <div
+          style={{
+            backgroundColor: "#FAF7F4",
+            paddingTop: "20px",
+            textAlign: "center",
+            fontFamily: 'ONE-Mobile-POP',
+            borderRadius: "20px",
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+            width: "80%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "5%"
+          }}>
         <div>
-          <div style={{ fontFamily: "yg-jalnan", marginBottom: "1rem" }}>
+          <div style={{fontFamily: 'ONE-Mobile-POP', fontSize: "1.4rem", marginBottom: "1rem", paddingBottom: "5%", borderBottom: "solid 1px lightgray" }}>
             {state.userInfo.name}님, 당신의 명함은
           </div>
           <Three
             frontImgSrc={state.frontImgUrl}
             backImgSrc={state.backImgUrl}
-          />
+            />
         </div>
 
         <Btn
           type="button"
           onClick={() => downloadImg()}
           color={"#FF7A00"}
-          style={{ width: "50%", marginBottom: "3rem" }}
-        >
+          style={{ width: "45%", marginBottom: "2rem", marginTop: "1.3rem" }}
+          >
           명함 다운받기
         </Btn>
+        </div>
+        <div 
+          style={{
+            backgroundColor: "#FAF7F4",
+            padding: "20px",
+            textAlign: "center",
+            fontFamily: 'ONE-Mobile-POP',
+            borderRadius: "20px",
+            boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+            width: "80%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "5%"
+            
+          }}>
+          <div
+            style={{ fontSize: "1.3rem", background: "transparent", lineHeight: "130%",
+            marginBottom: "3%"}}
+            >
+            다른 외대생들도 명함을
+            <br />
+            만들 수 있게 도와줘!
+            <br />
+          </div>
+          
+          <div 
+            style={{
+              width: "90%", 
+              backgroundColor: "lightgray", 
+              height: "1px",
+              marginBottom: "4%"}}>
 
-        <div
-          className="comment"
-          style={{ fontSize: "1rem", background: "transparent" }}
-        >
-          다른 외대생들도 명함을
-          <br />
-          만들 수 있게 도와줘!
-          <br />
-        </div>
-        <div
-          className="comment"
-          style={{ whiteSpace: "pre-wrap", background: "transparent" }}
-        >
-          지금 바로 공유하기
-        </div>
+          </div>
+
         <Share />
+        </div>
+          
+          <div 
+            style={{
+              width: "90%",  
+              height: "1px",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "15%"}}>
+          <Btn
+              type="button"
+              onClick={() => {
+                navigate("/");
+              }}
+              color={"#FF7A00"}
+              style={{
+                      borderRadius: "20px",
+                      width: "90%"}}
+              >
+              다른 명함 만들러 가기
+          </Btn>
 
-        <Btn
-          type="button"
-          onClick={() => {
-            navigate("/");
-          }}
-          color={"#FF7A00"}
-        >
-          다른 명함 만들러 가기
-        </Btn>
+        </div>
+
+        <div 
+            style={{
+              width: "90%",  
+              height: "1px",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "10%"}}>
+          <Btn
+              type="button"
+              onClick={() => {
+                window.open("https://www.instagram.com/hufsglobal_likelion/");
+              }}
+              color={"#FF7A00"}
+              style={{
+                      borderRadius: "20px",
+                      width: "90%"}}
+              >
+              새로운 명함 디자인 추천하러 가기
+          </Btn>
+
+        </div>
+
+
+
       </ResultPageStyle>
     </>
   );

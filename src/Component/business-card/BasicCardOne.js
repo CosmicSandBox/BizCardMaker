@@ -62,8 +62,8 @@ const Text = styled.p`
   font-size: 11px;
   background-color: transparent;
   margin-bottom: 6.3px;
-  /* color: #484340; */
-  font-family: "Noto Sans KR", sans-serif;
+  color: #484340;
+  font-family: 'Noto Sans KR', sans-serif;
   word-break: keep-all;
 `;
 
@@ -148,7 +148,7 @@ const BasicCardOne = ({}) => {
 
             <RBox>
               <RTextBox>
-                <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+                <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
                   {userInfo.name}
                 </Text>
                 <Text style={{ fontSize: "0.9rem", color: "lightgray" }}>
