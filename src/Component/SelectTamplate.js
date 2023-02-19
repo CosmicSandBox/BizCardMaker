@@ -47,7 +47,7 @@ const TopText = styled.div`
   align-items: center;
   white-space: pre-line;
   margin-top: 2rem;
-
+  word-break: keep-all;
   font-family: "yg-jalnan";
 `;
 

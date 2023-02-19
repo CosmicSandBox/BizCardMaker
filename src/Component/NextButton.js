@@ -25,14 +25,6 @@ const Btn = styled.button`
 function NextButton({info, color, classN}) {
     const navigate = useNavigate();
 
-    const Check = () => {
-        if(info.length >= 1) {
-            window.location.replace('/info');
-        }
-        else {
-            alert("이름을 입력하세요.");
-        };
-    }
     const Nav = () => {
         if(info.length >= 1) {
             navigate('/Info', {

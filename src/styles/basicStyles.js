@@ -20,6 +20,7 @@ export const TopContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 12px;
 `;
 
 export const Playground = styled.div`
