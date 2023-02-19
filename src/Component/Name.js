@@ -41,8 +41,8 @@ const NameText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  font-family: 'yg-jalnan';
+  word-break: keep-all;
+  font-family: 'TmoneyRoundWindExtraBold';
 `;
 
 const NamePleaseBox = styled.div`
@@ -60,19 +60,10 @@ const Detail = styled.div`
   display: flex;
   align-items: center;
 
-  font-family: 'yg-jalnan';
 `;
 
-const Form = styled.form`
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 26px;
-`;
 const InputName = styled.input`
-  width: 90%;
+  width: 80.8%;
   height: 40px;
   padding-left: 5px;
   border-width: 1px;
@@ -83,8 +74,12 @@ const InputName = styled.input`
   background-color: transparent;
   font-size: 1rem;
   font-family: 'yg-jalnan';
+  text-align: center;
   &:focus {
     outline: none;
+  }
+  &::placeholder {
+    color: #d3d3d3;
   }
 `;
 
@@ -108,9 +103,6 @@ function Name() {
         </TopContainer>
         <Playground>
           <NameText>먼저 당신의 이름을 알려주세요</NameText>
-          <Form>
-            <NamePleaseBox>이름을 입력해주세요</NamePleaseBox>
-            <Detail>실명 입력</Detail>
             <InputName
               onChange={onChange}
               placeholder={inputclicked === true ? "" : "김멋사"}
@@ -120,8 +112,8 @@ function Name() {
               onBlur={() => {
                 setInputClicked(false);
               }}
+              // autoFocus
             />
-          </Form>
           <NextButton info={input} color={color} classN={"Name"} />
         </Playground>
       </Container>

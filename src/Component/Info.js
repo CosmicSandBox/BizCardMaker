@@ -36,14 +36,14 @@ const TopText = styled.div`
   text-align: center;
   line-height: 160%;
   color: #412917;
-  margin-bottom: 57px;
+  margin-bottom: 76px;
   border-radius: 0;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
-
+  word-break: keep-all;
   font-family: 'yg-jalnan';
 `;
 
@@ -74,7 +74,7 @@ const Box = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 `;
 
 const Btn = styled.button`
@@ -91,7 +91,7 @@ const Btn = styled.button`
 
 //박스 목록 관리
 const InputBox = styled.div`
-  width: 87%;
+  width: 80%;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
@@ -117,15 +117,15 @@ const Box2 = styled.div`
 `;
 
 const InputInfo = styled.input`
-  width: 83.5%;
+  margin: 0 auto;
+  width: 79%;
   height: 40px;
   border-width: 1px;
   background-color: transparent;
   border: none;
   font-size: 1rem;
   border-bottom: solid 1px #94987e;
-  padding-left: 8px;
-
+  text-align: center;
   font-family: 'yg-jalnan';
 
   &:focus {
@@ -212,7 +212,6 @@ function Info() {
   const addBox = () => {
     const List = styled.div`
       width: 100%;
-      height: 50px;
       background-color: transparent;
       border: none;
       border-top: solid 0.3px #f7be7c;
@@ -221,6 +220,7 @@ function Info() {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
       &:focus {
         outline: none;
       }
@@ -241,39 +241,37 @@ function Info() {
 
     //클릭
     const onClick = () => {
-        if(input.length >=1) {
-            if(count === 5) {
-              if(user.length === 5) {
-                navigate('/select-template', {
-                  state: { name: user[0],
-                          nickname: user[1],
-                          major: user[2],
-                          contact: user[3],
-                          email: user[4],
-                          mbti: input
-                    },
-                  });
-              }
-              
-            }
-            else {
-                //값 저장 및 초기화
-                Send();
-                setCount((prev) => prev + 1);
-                //input 추가
-                setInputbox([...inputbox, addBox()]);
-                //사자
-                setLioncount((prev) => prev + 1);
-                //색 초기화
-                setColor("#D3D3D3")
-            }
+        if(input.length <= 1) {
+          alert("정보를 입력하세요!");
         }
         else {
-            alert("정보를 입력하세요!");
+          if(count === 5) {
+            if(user.length === 5) {
+              navigate('/select-template', {
+                state: { name: user[0],
+                        nickname: user[1],
+                        major: user[2],
+                        contact: user[3],
+                        email: user[4],
+                        mbti: input
+                  },
+                });
+            }
+            
+          }
+          else {
+              //값 저장 및 초기화
+              Send();
+              setCount((prev) => prev + 1);
+              //input 추가
+              setInputbox([...inputbox, addBox()]);
+              //사자
+              setLioncount((prev) => prev + 1);
+              //색 초기화
+              setColor("#D3D3D3")
+          }
         };  
     };
-    console.log(user);
-    console.log(lioncount + "lioncount 입니다.")
 
     return (
         <>
@@ -286,10 +284,6 @@ function Info() {
                 <Playground>
                     <TopText> {top[count]} </TopText>
                     <Box>
-                        <Box2>
-                            <InfoPleaseBox> {plz[count]} </InfoPleaseBox>
-                            <Detail> {detail[count]} </Detail>
-                        </Box2>
                         <InputInfo 
                             onChange={onChange} 
                             placeholder={inputclicked === true ? "" : initinput[count]}

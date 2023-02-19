@@ -3,57 +3,45 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
+
+
 const BizContainer = styled.div`
   width: 21.875rem;
   height: 12.75rem;
-  background-size: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
-
-const TopBox = styled.div`
-  width: 54.7%;
-  height: 20%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  background-color: transparent;
-  margin-top: 10.5%;
-  margin-bottom: 2.7%;
-`;
-
-const BottomBox = styled.div`
-  height: 33%;
-  width: 46.5%;
-  background-color: transparent;
-  display: flex;
-  align-items: flex-start;
-  justify-content: left;
+  background-color: white;
 `;
 
 const TTextBox = styled.div`
   background-color: transparent;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  margin-bottom: 11%;
+  margin-top: 22%;
 `;
 
 const BTextBox = styled.div`
   width: 100%;
   background-color: transparent;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 `;
 
+const BasicText = styled.p`
+  font-size: 12px;
+  color: #062B48;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+
+`;
+
 const Text = styled.div`
   font-size: 10.3px;
-  background-color: transparent;
-  margin-bottom: 6.3px;
   color: #484340;
   font-family: 'Noto Sans KR', sans-serif;
+  word-break: keep-all;
 `;
 
 const BasicCardTwo = ({ children }) => {
@@ -63,38 +51,82 @@ const BasicCardTwo = ({ children }) => {
   return (
     <>
       <div className="basic-two">
-        <BizContainer style={{ backgroundImage: "url(/img/006.jpg)" }}>
-          <TopBox>
-            <TTextBox>
-              <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
-                {userInfo.name}
-              </Text>
-              <Text
-                style={{
-                  fontSize: "0.9rem",
-                  color: "lightgray",
-                  paddingTop: "2.5%",
-                }}
-              >
-                &nbsp; {"<"} {userInfo.nickname} {">"}
-              </Text>
-            </TTextBox>
-          </TopBox>
+        <BizContainer>
+          <div style={{
+            width: "100%",
+            height: "94%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}>
+            <div 
+              style={{
+                width: "37%",
+                height: "81%",
+                borderRightStyle: "solid",
+                borderRightWidth: "2px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                marginTop: "4.7%"
+              }}>
+                <img src="/img/HUFSlogo_only.gif"
+                      style={{width: "54%", marginBottom: "6.8%"}}/>
+                <div style={{
+                  fontWeight: "bolder"
+                }}>H U F S</div>
+            </div>
+            <div style={{
+                width: "63%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                paddingLeft: "3%",
+            }}>
+                <TTextBox>
+                  <Text style={{ fontSize: "1.3rem", fontWeight: "bold" }}>
+                    {userInfo.name}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: "0.9rem",
+                      color: "lightgray",
+                      paddingTop: "2.5%",
+                    }}
+                  >
+                    &nbsp; {"<"} {userInfo.nickname} {">"}
+                  </Text>
+                </TTextBox>
 
-          <BottomBox>
-            <BTextBox>
-              <Text style={{ paddingLeft: "4.3px" }}>{userInfo.major}</Text>
-              <Text style={{ paddingLeft: "7px", marginBottom: "9.36px" }}>
-                {userInfo.email}
-              </Text>
-              <Text style={{ paddingLeft: "8px", marginBottom: "9.27px" }}>
-                {userInfo.contact}
-              </Text>
-              <Text>{userInfo.mbti}</Text>
-            </BTextBox>
-          </BottomBox>
+                <BTextBox>
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center", marginBottom: "2%"}}>
+                  <BasicText>Major.</BasicText>
+                  <Text style={{ paddingLeft: "4px" }}>{userInfo.major}</Text>
+                </div>
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center", marginBottom: "2%"}}>
+                  <BasicText>E-mail.</BasicText>
+                  <Text style={{ paddingLeft: "4px" }}>{userInfo.email}</Text>
+                </div>
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center", marginBottom: "2%"}}>
+                  <BasicText>Mobile.</BasicText>
+                  <Text style={{ paddingLeft: "4px" }}>{userInfo.contact}</Text>
+                </div>
+                <div style={{display:"flex", justifyContent:"center", alignItems:"center", marginBottom: "2%"}}>
+                  <BasicText>MBTI.</BasicText>
+                  <Text style={{ paddingLeft: "4px" }}>{userInfo.mbti}</Text>
+                </div>
+                </BTextBox>
+            </div>
+          </div>
+          <div 
+            style={{backgroundColor: "#062B48",
+                    bottom: "0",
+                    width: "100%",
+                    height: "6%",
+            }}></div>
         </BizContainer>
-      </div>
+        </div>
     </>
   );
 };
