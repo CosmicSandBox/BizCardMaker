@@ -140,11 +140,7 @@ const SelectTamplate = ({}) => {
               <Slide
                 photos={
                   side === "front"
-                    ? [
-                        <BasicCardOne ref={frontRef} />,
-                        <BasicCardTwo />,
-                        <BasicCardThree />,
-                      ]
+                    ? [<BasicCardOne />, <BasicCardTwo />, <BasicCardThree />]
                     : renderBackCard()
                 }
                 pickEvent={(index) => {
@@ -175,6 +171,7 @@ const SelectTamplate = ({}) => {
                           borderRadius: "50%",
                           background: color,
                           cursor: "pointer",
+                          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                         }}
                         onClick={() => {
                           setSelectedBackColor(color);
