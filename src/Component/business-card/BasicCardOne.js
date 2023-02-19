@@ -4,13 +4,12 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const BizContainer = styled.div`
-  width: 21.875rem;
+  width: 100%;
   height: 12.75rem;
   background-size: 48%;
   background-position: 50% 50%;
   background-color: white;
   background-repeat: no-repeat;
-  
 `;
 
 const LeftBox = styled.div`
@@ -54,8 +53,8 @@ const RTextBox = styled.div`
 const BasicText = styled.p`
   font-size: 12px;
   margin-bottom: 6.5px;
-  color: #062B48;
-  font-family: 'Noto Sans KR', sans-serif;
+  color: #062b48;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: bold;
 `;
 
@@ -68,52 +67,79 @@ const Text = styled.p`
   word-break: keep-all;
 `;
 
-const BasicCardOne = ({ children }) => {
+const BasicCardOne = ({}) => {
   const location = useLocation();
   const [userInfo] = useState(location.state);
+  console.log(userInfo);
 
   return (
     <>
-      <div>{children}</div>
-      <div className="basic-one">
+      <div className="basic-one" style={{ width: "100%" }}>
         <BizContainer style={{ backgroundImage: "url(/img/HUFSLogoOp.png" }}>
-            <div 
+          <div
             style={{
               height: "4.15rem",
               paddingLeft: "0.33rem",
               paddingTop: "0.33rem",
               display: "flex",
-            }}>
-              <img src="img/HUFSlogo_only.gif"
-                  style={{ height: "1.9rem"}}/>
-              <img src="img/HUFS_title.gif"
-                  style={{ height: "1.15rem",
-                          marginTop: "0.4rem",
-                          marginLeft: "0.32rem"}}/>
-
-
-            </div>
-            <div 
+            }}
+          >
+            <img src="img/HUFSlogo_only.gif" style={{ height: "1.9rem" }} />
+            <img
+              src="img/HUFS_title.gif"
+              style={{
+                height: "1.15rem",
+                marginTop: "0.4rem",
+                marginLeft: "0.32rem",
+              }}
+            />
+          </div>
+          <div
             style={{
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
-            }}>
+              alignItems: "center",
+            }}
+          >
             <LeftBox>
               <TextBox>
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <BasicText>Major.</BasicText>
                   <Text style={{ paddingLeft: "4px" }}>{userInfo.major}</Text>
                 </div>
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <BasicText>E-mail.</BasicText>
                   <Text style={{ paddingLeft: "4px" }}>{userInfo.email}</Text>
                 </div>
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <BasicText>Mobile.</BasicText>
                   <Text style={{ paddingLeft: "4px" }}>{userInfo.contact}</Text>
                 </div>
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <BasicText>MBTI.</BasicText>
                   <Text style={{ paddingLeft: "4px" }}>{userInfo.mbti}</Text>
                 </div>
@@ -131,16 +157,17 @@ const BasicCardOne = ({ children }) => {
               </RTextBox>
             </RBox>
           </div>
-          <div 
-          style={{backgroundColor: "#062B48",
-                  bottom: "0",
-                  width: "100%",
-                  height: "6%",
-                  marginTop: "2.76rem"
-          }}></div>
+          <div
+            style={{
+              backgroundColor: "#062B48",
+              bottom: "0",
+              width: "100%",
+              height: "6%",
+              marginTop: "2.76rem",
+            }}
+          ></div>
         </BizContainer>
-        </div>
-
+      </div>
     </>
   );
 };

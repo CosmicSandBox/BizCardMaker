@@ -70,13 +70,15 @@ const Slide = ({ photos, pickEvent = null, side }) => {
           align-items: center;
           justify-content: center;
         }
+        .slick-list {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
         .slick-prev:before,
         .slick-next:before {
           color: black;
         }
         .photo-box {
           display: flex !important;
-          justify-content: center;
         }
       `}</style>
     </>
