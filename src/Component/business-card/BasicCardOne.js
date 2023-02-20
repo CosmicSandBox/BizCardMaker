@@ -13,7 +13,7 @@ const BizContainer = styled.div`
 `;
 
 const LeftBox = styled.div`
-  width: 75%;
+  width: 74%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@ const LeftBox = styled.div`
 `;
 
 const RBox = styled.div`
-  width: 35%;
+  width: 36%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -52,19 +52,20 @@ const RTextBox = styled.div`
 
 const BasicText = styled.p`
   font-size: 12px;
-  margin-bottom: 6.5px;
+  margin-bottom: 6.7px;
   color: #062b48;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: bold;
 `;
 
 const Text = styled.p`
-  font-size: 11px;
+  font-size: 10.5px;
   background-color: transparent;
-  margin-bottom: 6.3px;
+  margin-bottom: 6.5px;
   color: #484340;
   font-family: 'Noto Sans KR', sans-serif;
   word-break: keep-all;
+  text-align: left;
 `;
 
 const BasicCardOne = ({}) => {
@@ -106,8 +107,6 @@ const BasicCardOne = ({}) => {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
                   }}
                 >
                   <BasicText>Major.</BasicText>
@@ -151,7 +150,7 @@ const BasicCardOne = ({}) => {
                 <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
                   {userInfo.name}
                 </Text>
-                <Text style={{ fontSize: "0.9rem", color: "lightgray" }}>
+                <Text style={{ fontSize: "0.74rem", color: "lightgray", textAlign: "right" }}>
                   {userInfo.nickname}
                 </Text>
               </RTextBox>

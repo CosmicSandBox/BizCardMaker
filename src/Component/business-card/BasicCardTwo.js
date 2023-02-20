@@ -22,7 +22,6 @@ const BTextBox = styled.div`
   width: 100%;
   background-color: transparent;
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 `;
@@ -35,10 +34,11 @@ const BasicText = styled.p`
 `;
 
 const Text = styled.div`
-  font-size: 10.3px;
+  font-size: 10.1px;
   color: #484340;
   font-family: "Noto Sans KR", sans-serif;
   word-break: keep-all;
+  text-align: left;
 `;
 
 const BasicCardTwo = ({}) => {
@@ -111,8 +111,6 @@ const BasicCardTwo = ({}) => {
                 <div
                   style={{
                     display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
                     marginBottom: "2%",
                   }}
                 >
