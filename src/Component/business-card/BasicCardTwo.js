@@ -44,7 +44,6 @@ const Text = styled.div`
 const BasicCardTwo = ({}) => {
   const location = useLocation();
   const [userInfo] = useState(location.state);
-  console.log("userInfo", userInfo);
 
   return (
     <>
@@ -91,21 +90,28 @@ const BasicCardTwo = ({}) => {
                 display: "flex",
                 flexDirection: "column",
                 paddingLeft: "3%",
-            }}>
-                <TTextBox>
-                  <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
-                    {userInfo.name}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: "0.9rem",
-                      color: "lightgray",
-                      paddingTop: "2.5%",
-                    }}
-                  >
-                    &nbsp; {"<"} {userInfo.nickname} {">"}
-                  </Text>
-                </TTextBox>
+              }}
+            >
+              <TTextBox>
+                <Text
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: "bold",
+                    color: "black",
+                  }}
+                >
+                  {userInfo.name}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: "0.9rem",
+                    color: "lightgray",
+                    paddingTop: "2.5%",
+                  }}
+                >
+                  &nbsp; {"<"} {userInfo.nickname} {">"}
+                </Text>
+              </TTextBox>
 
               <BTextBox>
                 <div

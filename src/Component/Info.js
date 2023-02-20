@@ -44,7 +44,7 @@ const TopText = styled.div`
   align-items: center;
   white-space: pre-line;
   word-break: keep-all;
-  font-family: 'ONE-Mobile-POP';
+  font-family: "ONE-Mobile-POP";
 `;
 
 const InfoPleaseBox = styled.div`
@@ -54,7 +54,7 @@ const InfoPleaseBox = styled.div`
   text-align: left;
   margin: 0 auto;
   margin-bottom: 3px;
-  font-family: 'yg-jalnan';
+  font-family: "yg-jalnan";
 `;
 
 const Detail = styled.div`
@@ -63,7 +63,7 @@ const Detail = styled.div`
   font-size: 0.8rem;
   text-align: left;
   margin: 0 auto;
-  font-family: 'TmoneyRoundWindExtraBold';
+  font-family: "TmoneyRoundWindExtraBold";
   margin-bottom: 5px;
 `;
 
@@ -85,10 +85,9 @@ const Btn = styled.button`
   border: none;
   color: white;
   font-size: 16px;
-  font-family: 'yg-jalnan';
+  font-family: "yg-jalnan";
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
-
 
 //박스 목록 관리 따로
 const InputBox = styled.div`
@@ -100,7 +99,6 @@ const InputBox = styled.div`
   align-items: center;
   background-color: transparent;
 `;
-
 
 const Box2 = styled.div`
   width: 85%;
@@ -126,27 +124,25 @@ const InputInfo = styled.input`
   outline: none;
   margin-top: 5px;
   margin-bottom: 2rem;
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   font-size: 1rem;
-  font-family: 'yg-jalnan';
-  color: rgba(0,0,0,0.8);
+  font-family: "yg-jalnan";
+  color: rgba(0, 0, 0, 0.8);
 
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: #A9A9A9;
+    color: #a9a9a9;
   }
 `;
 
 function Info() {
-  console.log("시작------");
   //이동 navigate
   const navigate = useNavigate();
   //이름 받아오기
   const location = useLocation();
-  console.log("state", location.state);
 
   const [userInfo] = useState(location.state);
 
@@ -183,24 +179,10 @@ function Info() {
   ];
 
   //plzmsg 바꾸기
-  const plz = [
-    "",
-    "닉네임",
-    "학과",
-    "연락처",
-    "이메일",
-    "MBTI",
-  ];
+  const plz = ["", "닉네임", "학과", "연락처", "이메일", "MBTI"];
 
   //detailmsg 바꾸기
-  const detail = [
-    "",
-    "NICKNAME",
-    "MAJOR",
-    "CONTACT",
-    "E-MAIL",
-    "",
-  ];
+  const detail = ["", "NICKNAME", "MAJOR", "CONTACT", "E-MAIL", ""];
 
   //input initmsg
   const initinput = [
@@ -214,18 +196,18 @@ function Info() {
 
   //box 추가하기
   const addBox = () => {
-
-      const List = styled.div`
+    const List = styled.div`
       width: 100%;
-      background-color: #FAF7F4;
+      background-color: #faf7f4;
       border: none;
       font-size: 0.9rem;
-      font-family: 'yg-jalnan';
+      font-family: "yg-jalnan";
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 15px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       border-radius: 20px;
       margin-bottom: 10px;
       &:focus {
@@ -238,84 +220,76 @@ function Info() {
 
   const [inputbox, setInputbox] = useState([]);
 
-    //값 저장 및 초기화
-    const Send = () => {
-        setUser(user => [...user, input]);
-        setInput('');
+  //값 저장 및 초기화
+  const Send = () => {
+    setUser((user) => [...user, input]);
+    setInput("");
+  };
 
-    };
-
-
-    //클릭
-    const onClick = () => {
-        if(input.length <= 1) {
-          alert("정보를 입력하세요!");
+  //클릭
+  const onClick = () => {
+    if (input.length <= 1) {
+      alert("정보를 입력하세요!");
+    } else {
+      if (count === 5) {
+        if (user.length === 5) {
+          navigate("/select-template", {
+            state: {
+              name: user[0],
+              nickname: user[1],
+              major: user[2],
+              contact: user[3],
+              email: user[4],
+              mbti: input,
+            },
+          });
         }
-        else {
-          if(count === 5) {
-            if(user.length === 5) {
-              navigate('/select-template', {
-                state: { name: user[0],
-                        nickname: user[1],
-                        major: user[2],
-                        contact: user[3],
-                        email: user[4],
-                        mbti: input
-                  },
-                });
-            }
-            
-          }
-          else {
-              //값 저장 및 초기화
-              Send();
-              setCount((prev) => prev + 1);
-              //input 추가
-              setInputbox([...inputbox, addBox()]);
-              //사자
-              setLioncount((prev) => prev + 1);
-              //색 초기화
-              setColor("#D3D3D3")
-          }
-        };  
-    };
+      } else {
+        //값 저장 및 초기화
+        Send();
+        setCount((prev) => prev + 1);
+        //input 추가
+        setInputbox([...inputbox, addBox()]);
+        //사자
+        setLioncount((prev) => prev + 1);
+        //색 초기화
+        setColor("#D3D3D3");
+      }
+    }
+  };
 
-    return (
-        <>
-            <GlobalStyle />
-            <Container>
-                <TopContainer>
-                    <TopLion 
-                        lioncount = {lioncount} />
-                </TopContainer>
-                <Playground>
-                    <TopText> {top[count]} </TopText>
-                    <InfoPleaseBox>{plz[count]}</InfoPleaseBox>
-                    <Detail>{detail[count]}</Detail>
-                    <Box>
-                        <InputInfo 
-                            onChange={onChange} 
-                            placeholder={inputclicked === true ? "" : initinput[count]}
-                            value={input}
-                            onFocus={() => {setInputClicked(true)}}
-                            onBlur={() => {setInputClicked(false)}}
-                            />
-                        <InputBox>
-                            {inputbox.map(elem => elem)}
-                        </InputBox>  
-                    </Box>
-                    <Btn
-                        type="button"
-                        onClick={onClick}
-                        color = {color}
-                    >다음 단계</Btn>
-                    
-                </Playground>
-
-            </Container>
-
-        </>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      <Container>
+        <TopContainer>
+          <TopLion lioncount={lioncount} />
+        </TopContainer>
+        <Playground>
+          <TopText> {top[count]} </TopText>
+          <InfoPleaseBox>{plz[count]}</InfoPleaseBox>
+          <Detail>{detail[count]}</Detail>
+          <Box>
+            <InputInfo
+              onChange={onChange}
+              placeholder={inputclicked === true ? "" : initinput[count]}
+              value={input}
+              onFocus={() => {
+                setInputClicked(true);
+              }}
+              onBlur={() => {
+                setInputClicked(false);
+              }}
+            />
+            <InputBox>{inputbox.map((elem) => elem)}</InputBox>
+          </Box>
+          <Btn type="button" onClick={onClick} color={color}>
+            다음 단계
+          </Btn>
+        </Playground>
+      </Container>
+    </>
+  );
 }
 
 export default Info;
