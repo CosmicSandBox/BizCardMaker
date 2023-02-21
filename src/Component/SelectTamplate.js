@@ -79,6 +79,7 @@ const SelectTamplate = ({}) => {
   const select = useCallback(async () => {
     let imgSrc;
     let className;
+    const date = Math.floor(new Date().getTime() / 1000);
     if (side === "front") {
       if (selectedFrontCard === 1) {
         className = ".basic-one";
@@ -89,7 +90,7 @@ const SelectTamplate = ({}) => {
       }
       await html2canvas(document.querySelector(className), { scale: 10 }).then(
         (canvas) => {
-          imgSrc = canvas.toDataURL("/a");
+          imgSrc = canvas.toDataURL(`/${date}`);
         }
       );
 
@@ -99,7 +100,7 @@ const SelectTamplate = ({}) => {
       className = `.card-back-side-${selectedBackLogo - 1}`;
       await html2canvas(document.querySelector(className), { scale: 10 }).then(
         (canvas) => {
-          imgSrc = canvas.toDataURL("/a");
+          imgSrc = canvas.toDataURL(`/${date}`);
         }
       );
 

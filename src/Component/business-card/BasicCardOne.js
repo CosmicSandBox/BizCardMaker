@@ -63,7 +63,7 @@ const Text = styled.p`
   background-color: transparent;
   margin-bottom: 6.5px;
   color: #484340;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   word-break: keep-all;
   text-align: left;
 `;
@@ -71,7 +71,6 @@ const Text = styled.p`
 const BasicCardOne = ({}) => {
   const location = useLocation();
   const [userInfo] = useState(location.state);
-  console.log(userInfo);
 
   return (
     <>
@@ -147,10 +146,22 @@ const BasicCardOne = ({}) => {
 
             <RBox>
               <RTextBox>
-                <Text style={{ fontSize: "1.3rem", fontWeight: "bold", color: "black" }}>
+                <Text
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: "bold",
+                    color: "black",
+                  }}
+                >
                   {userInfo.name}
                 </Text>
-                <Text style={{ fontSize: "0.74rem", color: "lightgray", textAlign: "right" }}>
+                <Text
+                  style={{
+                    fontSize: "0.74rem",
+                    color: "lightgray",
+                    textAlign: "right",
+                  }}
+                >
                   {userInfo.nickname}
                 </Text>
               </RTextBox>
