@@ -136,7 +136,7 @@ const ResultPage = () => {
               marginBottom: "3%",
             }}
           >
-            다른 외대생들도 명함을
+            다른 친구들도 명함을
             <br />
             만들 수 있게 도와줘!
             <br />
