@@ -157,8 +157,8 @@ const SelectTamplate = ({}) => {
             {side === "back" && (
               <div className={`color`}>
                 <div>
-                  <div>색상을 선택해주세요</div>
-                  <div>(로고 주변 배경 색에 적용됩니다)</div>
+                  <div style={{fontFamily: "Pretendard-Regular"}}>색상을 선택해주세요</div>
+                  <div style={{fontFamily: "Pretendard-Regular"}}>(로고 주변 배경 색에 적용됩니다)</div>
                 </div>
                 <div
                   style={{ display: "flex", justifyContent: "space-evenly" }}
