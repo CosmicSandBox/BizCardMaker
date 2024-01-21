@@ -1,142 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "../Component/GlobalStyle";
 import styled from "styled-components";
-import Undermsg from "./Undermsg";
-import TopLion from "./TopLion";
-
-const Container = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 44px;
-`;
-
-const TopContainer = styled.div`
-  width: 90%;
-  height: 65px;
-  margin: 0 auto;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
-
-const Playground = styled.div`
-  width: 90%;
-  height: 655px;
-  margin: 0 auto;
-  padding-top: 30px;
-  text-align: center;
-`;
-
-const TopText = styled.div`
-  width: 100%;
-  height: 68px;
-  text-align: center;
-  line-height: 160%;
-  color: #412917;
-  margin-bottom: 76px;
-  border-radius: 0;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  white-space: pre-line;
-  word-break: keep-all;
-  font-family: "ONE-Mobile-POP";
-`;
-
-const InfoPleaseBox = styled.div`
-  width: 79%;
-  color: #412917;
-  font-size: 1.15rem;
-  text-align: left;
-  margin: 0 auto;
-  margin-bottom: 3px;
-  font-family: "yg-jalnan";
-`;
-
-const Detail = styled.div`
-  color: #7e593e;
-  width: 79%;
-  font-size: 0.8rem;
-  text-align: left;
-  margin: 0 auto;
-  font-family: "TmoneyRoundWindExtraBold";
-  margin-bottom: 5px;
-`;
-
-const Box = styled.div`
-  margin: 0 auto;
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 100px;
-`;
-
-const Btn = styled.button`
-  width: 80%;
-  height: 65px;
-  background: ${(props) => props.color};
-  border-radius: 50px;
-  border: none;
-  color: white;
-  font-size: 16px;
-  font-family: "yg-jalnan";
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`;
-
-//박스 목록 관리 따로
-const InputBox = styled.div`
-  width: 84%;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-`;
-
-const Box2 = styled.div`
-  width: 85%;
-  padding: 5px;
-  padding-top: 15px;
-  padding-bottom: 0px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const InputInfo = styled.input`
-  margin: 0 auto;
-  width: 73%;
-  height: 40px;
-  padding: 12px 20px;
-  border-width: 1px;
-  border: none;
-  outline: none;
-  margin-top: 5px;
-  margin-bottom: 2rem;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: "yg-jalnan";
-  color: rgba(0, 0, 0, 0.8);
-
-  &:focus {
-    outline: none;
-  }
-  &::placeholder {
-    color: #a9a9a9;
-  }
-`;
+import TopLion from "../Component/TopLion";
+import {
+  Container,
+  TopContainer,
+  Playground,
+  GuideText,
+  MainInputLabel,
+  SubInputLabel,
+  Input,
+  InfoListBox,
+  Box,
+  Btn,
+} from "../styles/basicStyles";
+// import { Btn } from "../Component/NextButton";
 
 function Info() {
   //이동 navigate
@@ -206,7 +85,8 @@ function Info() {
       justify-content: center;
       align-items: center;
       padding: 15px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
       border-radius: 20px;
       margin-bottom: 10px;
@@ -266,11 +146,11 @@ function Info() {
           <TopLion lioncount={lioncount} />
         </TopContainer>
         <Playground>
-          <TopText> {top[count]} </TopText>
-          <InfoPleaseBox>{plz[count]}</InfoPleaseBox>
-          <Detail>{detail[count]}</Detail>
+          <GuideText> {top[count]} </GuideText>
+          <MainInputLabel>{plz[count]}</MainInputLabel>
+          <SubInputLabel>{detail[count]}</SubInputLabel>
           <Box>
-            <InputInfo
+            <Input
               onChange={onChange}
               placeholder={inputclicked === true ? "" : initinput[count]}
               value={input}
@@ -281,12 +161,12 @@ function Info() {
                 setInputClicked(false);
               }}
             />
-            <InputBox>{inputbox.map((elem) => elem)}</InputBox>
+            <InfoListBox>{inputbox.map((elem) => elem)}</InfoListBox>
           </Box>
-          <Btn type="button" onClick={onClick} color={color}>
-            다음 단계
-          </Btn>
         </Playground>
+        <Btn type="button" onClick={onClick} color={color}>
+          다음 단계
+        </Btn>
       </Container>
     </>
   );

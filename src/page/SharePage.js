@@ -20,20 +20,6 @@ function Share() {
     return () => document.body.removeChild(script);
   }, []);
 
-
-  // web share api
-  const handle = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: "내 생애 첫 명함",
-        text: "명함 한 번 만들어보고 싶묘? 그럼 들어와보묘~🐰",
-        url: "/",
-      });
-    } else {
-      alert("공유하기가 지원되지 않는 환경 입니다.");
-    }
-  };
-
   //url
   const onClick = () => {
     alert("복사 완료!");
