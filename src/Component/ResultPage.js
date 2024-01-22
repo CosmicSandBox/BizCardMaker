@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Three from "./Three";
 import { Btn } from "../styles/basicStyles";
 import styled from "styled-components";
-import Share from "./Share";
-import { m } from "framer-motion";
+import Share from "../page/SharePage";
 
 const ResultPageStyle = styled.section`
   & {

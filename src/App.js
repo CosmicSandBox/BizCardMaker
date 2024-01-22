@@ -12,6 +12,7 @@ function App() {
         style={{
           display: "flex",
           flexDirection: "column",
+          justifyContent: "space-between",
           margin: "0 auto",
 
           position: "relative",

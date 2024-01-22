@@ -1,64 +1,16 @@
 import React, { useState, useMemo } from "react";
-import Three from "./Three";
-import styled from "styled-components";
+import Three from "../Component/Three";
 import { useNavigate } from "react-router-dom";
-import { Container, Btn } from "../styles/basicStyles";
-
-const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 40px;
-`;
-
-const Intro = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  color: #412917;
-  position: relative;
-  margin-bottom: 20px;
-`;
-
-const TopText = styled.div`
-  font-family: "ONE-Mobile-POP";
-  font-size: 25px;
-  white-space: pre-wrap;
-  line-height: 120%;
-  color: black;
-`;
-const StyledInput = styled.input`
-  appearance: none;
-  border: 1.5px solid gainsboro;
-  border-radius: 0.35rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  &:checked {
-    border-color: transparent;
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-    background-size: 100% 100%;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-color: #ff7a00;
-  }
-`;
-const StyledLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  user-select: none;
-  gap: 0.3rem;
-  margin-top: 12px;
-  margin-bottom: 20px;
-`;
-
-const StyledP = styled.p`
-  margin-left: 0.25rem;
-
-  font-family: "PretendardWindRegular";
-`;
+import {
+  Container,
+  Btn,
+  Section,
+  Intro,
+  TopText,
+  StyledInput,
+  StyledLabel,
+  StyledP,
+} from "../styles/basicStyles";
 
 const HomePage = () => {
   const [state, setState] = useState(false);

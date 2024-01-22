@@ -1,19 +1,20 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import TopLion from "./TopLion";
-import Slide from "./Slide";
+import TopLion from "../Component/TopLion";
+import Slide from "../Component/Slide";
+import BasicCardOne from "../Component/business-card/BasicCardOne";
+import BasicCardTwo from "../Component/business-card/BasicCardTwo";
+import BasicCardThree from "../Component/business-card/BasicCardThree";
+import CardBackSide from "../Component/business-card/CardBackSide";
+import html2canvas from "html2canvas";
 import {
   Container,
   TopContainer,
   Playground,
+  GuideText,
   Btn,
 } from "../styles/basicStyles";
-import BasicCardOne from "./business-card/BasicCardOne";
-import BasicCardTwo from "./business-card/BasicCardTwo";
-import BasicCardThree from "./business-card/BasicCardThree";
-import CardBackSide from "./business-card/CardBackSide";
-import html2canvas from "html2canvas";
+import { SliderBox, ColorSelectBox } from "../styles/slideStyles";
 
 const backSideColor = [
   "#FFFFFF",
@@ -34,24 +35,7 @@ const backLogo = [
   "logo08.png",
 ];
 
-const TopText = styled.div`
-  width: 100%;
-  height: 68px;
-  text-align: center;
-  line-height: 160%;
-  color: #412917;
-  border-radius: 0;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  white-space: pre-line;
-  margin-top: 2rem;
-  word-break: keep-all;
-  font-family: "ONE-Mobile-POP";
-`;
-
-const SelectTamplate = ({}) => {
+const SelectTamplatePage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -60,8 +44,6 @@ const SelectTamplate = ({}) => {
   const [selectedBackColor, setSelectedBackColor] = useState("#292929");
   const [selectedBackLogo, setSelectedBackLogo] = useState(1);
   const [finalFrontUrl, sefFinalFrontUrl] = useState(null);
-
-  const frontRef = useRef(null);
 
   const renderBackCard = () => {
     const result = [];
@@ -124,38 +106,36 @@ const SelectTamplate = ({}) => {
           <TopLion lioncount={side === "front" ? 6 : 7} />
         </TopContainer>
 
-        {side === "front" ? (
-          <TopText>
-            이제 가장 마음에 드는<br></br> 명함 디자인을 골라주세요
-          </TopText>
-        ) : (
-          <TopText>
-            명함 뒷 면에 쓰일 마음에 드는 <br></br>
-            로고와 색을 선택해주세요
-          </TopText>
-        )}
-
         <Playground>
-          <div className={`content`}>
-            <div style={{ height: "50vh" }}>
-              <Slide
-                photos={
-                  side === "front"
-                    ? [<BasicCardOne />, <BasicCardTwo />, <BasicCardThree />]
-                    : renderBackCard()
+          {side === "front" ? (
+            <GuideText>
+              이제 가장 마음에 드는<br></br> 명함 디자인을 골라주세요
+            </GuideText>
+          ) : (
+            <GuideText>
+              명함 뒷 면에 쓰일 마음에 드는 <br></br>
+              로고와 색을 선택해주세요
+            </GuideText>
+          )}
+          <SliderBox>
+            <Slide
+              photos={
+                side === "front"
+                  ? [<BasicCardOne />, <BasicCardTwo />, <BasicCardThree />]
+                  : renderBackCard()
+              }
+              pickEvent={(index) => {
+                if (side === "front") {
+                  setSelectedFrontCard(index);
+                } else {
+                  setSelectedBackLogo(index);
                 }
-                pickEvent={(index) => {
-                  if (side === "front") {
-                    setSelectedFrontCard(index);
-                  } else {
-                    setSelectedBackLogo(index);
-                  }
-                }}
-                side={side}
-              ></Slide>
-            </div>
+              }}
+              side={side}
+            ></Slide>
+
             {side === "back" && (
-              <div className={`color`}>
+              <ColorSelectBox>
                 <div>
                   <div style={{fontFamily: "Pretendard-Regular"}}>색상을 선택해주세요</div>
                   <div style={{fontFamily: "Pretendard-Regular"}}>(로고 주변 배경 색에 적용됩니다)</div>
@@ -181,35 +161,16 @@ const SelectTamplate = ({}) => {
                     );
                   })}
                 </div>
-              </div>
+              </ColorSelectBox>
             )}
-          </div>
+          </SliderBox>
           <Btn type="button" onClick={select} color={"#FF7A00"}>
             선택하기
           </Btn>
         </Playground>
       </Container>
-
-      <style jsx>{`
-        .content {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-          margin-bottom: 2rem;
-        }
-        .color {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .color div:first-child {
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-        }
-      `}</style>
     </>
   );
 };
 
-export default SelectTamplate;
+export default SelectTamplatePage;
